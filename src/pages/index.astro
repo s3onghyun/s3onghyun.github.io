@@ -5,45 +5,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const recentPosts = (await getCollection('posts'))
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
-const faceArt = [
-  '                _______                      ',
-  '            _ag@@@@@@@@$y______              ',
-  '         _a@@@@@@@@@@@@@@@@@@@@@@gy_         ',
-  '       _g@@@@@@@@@@@@@@@@@@@@@@@@@@@g_       ',
-  '      g@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@g_     ',
-  '     y@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@y    ',
-  '     $@@@@@@@@@@@@@@@@@@@@~@@@@@@@@@@@@@@L   ',
-  '    4@@@@@@@@@@@@@@@@@@@@$  "@@@@@@@@@@@@@   ',
-  '    4@@@@@@@@@@@@@@@@@@@@$   4@@@@@@@@@@@F   ',
-  '     @@@@@@@@@@@@@@@@@@@T$    @@@@@@@@@@@    ',
-  '   _gZ@@@@@@@@@@@@@@@@@~4    4@@@@@@@@@@@    ',
-  '   @M@@@@@@@@@@@@@@@@@@@      5@@@@@@@@@@    ',
-  "   Q@@@@@@@gg7=@@@@E`~5@$     _@@@@@@@@@'    ",
-  '   @@@@@@@@@~` ~@@P@Dg__p    ~~~P@@@@@@~     ',
-  '   0@@W@@@@F     `~^ ~g@@    yy__  ~@F`      ',
-  '    4@ME$@g_         -@@F   ~@M`==  F        ',
-  "     '  @@@@_      y@#@~                     ",
-  '       _@@@@F     4@@@@,                     ',
-  '     jyg@@@@  4ggg_~FFF+                     ',
-  '     1@@@@@@   @@@@@g_                       ',
-  '     1@@@@@@g a@@@@y     aa*                 ',
-  '     4@@@@@@@@J@~` ~                         ',
-  '     g@@@@@@@@@_                              ',
-  '    g@@@@@@@@@@@r                             ',
-  '  s R@@@@@@@@@@@L                             ',
-].join('\n');
+const faceArt = `
+                        ygg@gggyy_
+             _ya@@@ggyg@@@@@@@@@@@@gy_
+           y@@@@@@@@@@@@@@@@@@@@@@@@@@g_
+         y@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_
+        a@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@g
+       a@@@@@@@@@@@T~~@@@@@$@@@@@@@@@@@@@@@L
+      y@@@@@@@@@@@F    0@@@@@@@@@@@@@@@@@@@@L
+      4@@@@@@@@@@@     4@@@@@$$@@@@@@@@g$@@@$
+      4@@@@@@@@@@@     4@$@@@@@@@$@@@@@@@g@@@
+      4@@@@@@@@@@@       $@@@@@@@@@@@@@@@@@@$
+       @@@@@@@@@@$      =~P@@$@@@@@@@@@@@@@@F
+       $@@@@@@@@@@@gy_    __y@@@@@@@@@@@@@@@
+       4@@@@@@@@~~~@@@g   ~~\`~~\` \`\`~~~~@@@@@
+       a@@@@@@@@@$@gg@@    g@@@gayy_    @@@_
+       $@@@@@~FR@a*-$@@    $@@@@y\`\`     @@~5
+       \`@@@@@      y@@@     ~@@y\`       @@ \`
+        @@@@@     _@@@@      _@@L      4F [
+        4@@@@,  _g@@@@@     .@@@g      4
+         ~@@@@ a@@@@@@@@=F~\`  ~@@@,    f
+          $@@F4@@@@@@@y________g@@~
+          \`@@@  4@@@@FF~~~~~~@@@@F    z
+           "@@@_a@@@@@@g$=_5F\` 7~    ,
+            "@@@@@@@@@@@@~~        y/
+              ~@@@@~~  \`         y$F
+               4@@@@y_       _yg@F\`  l
+                @@@@@@@@ggygg@@@~    $,
+                4@@@@@@@@@@@@F~      7Fay`.split('\n').map((line) => line.padEnd(48, ' ')).join('\n') + '\n';
 ---
 
 <BaseLayout>
   <section class="intro">
     <div class="neofetch">
-      <pre class="face-art" aria-label="ASCII portrait of Seonghyun Hong">{faceArt}</pre>
+      <pre class="face-art" aria-label="ASCII portrait of Seonghyun Hong" set:html={faceArt}></pre>
       <div class="identity">
         <p class="command"><span aria-hidden="true">$ </span>neofetch --profile</p>
         <h1>SEONGHYUN HONG</h1>
         <dl>
           <div><dt>role</dt><dd>Platform / DevOps engineer</dd></div>
           <div><dt>stack</dt><dd>GitLab · Kubernetes · Observability</dd></div>
+          <div><dt>hobbies</dt><dd>reading · escape rooms</dd></div>
           <div><dt>github</dt><dd><a href="https://github.com/s3onghyun" rel="noreferrer">github.com/s3onghyun</a></dd></div>
         </dl>
       </div>
