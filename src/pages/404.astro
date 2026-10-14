@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404: Not Found" description="요청한 페이지를 찾을 수 없습니다.">
+  <section class="not-found">
+    <p class="command"><span aria-hidden="true">$ </span>cat /var/log/not-found</p>
+    <p class="error-code" aria-hidden="true">404</p>
+    <h1>buffer not found</h1>
+    <p>요청한 페이지가 없거나 이동되었습니다.</p>
+    <p><a href="/">cd ~/notes</a> <span aria-hidden="true">← 홈으로 돌아가기</span></p>
+    <p class="modeline" aria-hidden="true">-- NOT FOUND -- 404</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found { padding-top: clamp(4rem, 15vw, 8rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  .error-code { color: var(--border); font-size: clamp(4rem, 20vw, 9rem); font-weight: 700; letter-spacing: -0.1em; line-height: 1; margin: 1rem 0 0; }
+  h1 { font-size: clamp(1.5rem, 5vw, 2.25rem); margin: 0.5rem 0 1rem; }
+  .not-found > p:not(.command):not(.error-code):not(.modeline) { color: var(--muted); }
+  .not-found a { color: var(--accent); }
+  .modeline { background: var(--surface); color: var(--muted); font-size: 0.76rem; margin-top: 3rem; padding: 0.2rem 0.5rem; text-align: right; }
+</style>
