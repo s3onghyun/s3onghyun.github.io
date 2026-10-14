@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import faceArt from '../assets/face-braille.txt?raw';
+import faceArt from '../assets/face-ascii-v2.txt?raw';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const posts = (await getCollection('posts'))
@@ -8,40 +8,12 @@ const posts = (await getCollection('posts'))
 const techPosts = posts.filter((post) => post.data.category === 'tech');
 const studyPosts = posts.filter((post) => post.data.category === 'study').slice(0, 2);
 const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0, 2);
-const legacyFaceArt = `
-                        ygg@gggyy_
-             _ya@@@ggyg@@@@@@@@@@@@gy_
-           y@@@@@@@@@@@@@@@@@@@@@@@@@@g_
-         y@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@_
-        a@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@g
-       a@@@@@@@@@@@T~~@@@@@$@@@@@@@@@@@@@@@L
-      y@@@@@@@@@@@F    0@@@@@@@@@@@@@@@@@@@@L
-      4@@@@@@@@@@@     4@@@@@$$@@@@@@@@g$@@@$
-      4@@@@@@@@@@@     4@$@@@@@@@$@@@@@@@g@@@
-      4@@@@@@@@@@@       $@@@@@@@@@@@@@@@@@@$
-       @@@@@@@@@@$      =~P@@$@@@@@@@@@@@@@@F
-       $@@@@@@@@@@@gy_    __y@@@@@@@@@@@@@@@
-       4@@@@@@@@~~~@@@g   ~~\`~~\` \`\`~~~~@@@@@
-       a@@@@@@@@@$@gg@@    g@@@gayy_    @@@_
-       $@@@@@~FR@a*-$@@    $@@@@y\`\`     @@~5
-       \`@@@@@      y@@@     ~@@y\`       @@ \`
-        @@@@@     _@@@@      _@@L      4F [
-        4@@@@,  _g@@@@@     .@@@g      4
-         ~@@@@ a@@@@@@@@=F~\`  ~@@@,    f
-          $@@F4@@@@@@@y________g@@~
-          \`@@@  4@@@@FF~~~~~~@@@@F    z
-           "@@@_a@@@@@@g$=_5F\` 7~    ,
-            "@@@@@@@@@@@@~~        y/
-              ~@@@@~~  \`         y$F
-               4@@@@y_       _yg@F\`  l
-                @@@@@@@@ggygg@@@~    $,
-                4@@@@@@@@@@@@F~      7Fay`.split('\n').map((line) => line.padEnd(48, ' ')).join('\n') + '\n';
 ---
 
 <BaseLayout>
   <section class="intro">
     <div class="neofetch">
-      <pre class="face-art" aria-label="Braille portrait of Seonghyun Hong" set:html={faceArt}></pre>
+      <pre class="face-art" aria-label="ASCII portrait of Seonghyun Hong">{faceArt}</pre>
       <div class="identity">
         <p class="command"><span aria-hidden="true">$ </span>neofetch --profile</p>
         <h1>SEONGHYUN HONG</h1>
@@ -97,7 +69,7 @@ const legacyFaceArt = `
   .intro { padding-top: clamp(2.5rem, 8vw, 5.5rem); }
   .command { color: var(--accent); font-size: 0.9rem; }
   .neofetch { align-items: center; border-bottom: 1px solid var(--border); display: grid; gap: clamp(1.25rem, 5vw, 4rem); grid-template-columns: minmax(15rem, 23rem) minmax(0, 1fr); padding-bottom: 2.25rem; }
-  .face-art { color: var(--foreground); font-family: "JetBrains Mono", "Noto Sans Symbols 2", "DejaVu Sans Mono", var(--mono); font-size: clamp(0.45rem, 1.15vw, 0.68rem); font-variant-ligatures: none; line-height: 1.16; margin: 0; overflow-x: auto; white-space: pre; }
+  .face-art { color: var(--foreground); font-size: clamp(0.45rem, 1.15vw, 0.68rem); font-variant-ligatures: none; line-height: 1.16; margin: 0; overflow-x: auto; white-space: pre; }
   .identity { min-width: 0; }
   .identity .command { margin: 0 0 0.8rem; }
   h1 { margin: 0 0 1.25rem; font-size: clamp(1.45rem, 4vw, 2.25rem); letter-spacing: -0.05em; line-height: 1.3; }
