@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    name: 'nvim-edu',
+    description: 'Neovim으로 Vim을 배우기 위한 인터랙티브 튜토리얼입니다.',
+    url: 'https://github.com/s3onghyun/nvim-edu',
+  },
+  {
+    name: '불침번 / bulchimbeon',
+    description: '팀의 온콜과 당직 흐름을 가볍게 정리하기 위한 도구입니다.',
+    url: 'https://github.com/s3onghyun/bulchimbeon',
+  },
+  {
+    name: 'otelcol-doctor',
+    description: 'OpenTelemetry Collector 설정을 점검하기 위한 도구입니다.',
+    url: 'https://github.com/s3onghyun/otelcol-doctor',
+  },
+];
+---
+
+<BaseLayout title="Projects" description="s3onghyun의 공개 프로젝트">
+  <section class="projects">
+    <p class="command"><span aria-hidden="true">$ </span>ls -la ~/projects</p>
+    <h1>projects/</h1>
+    <ul>
+      {projects.map((project) => (
+        <li>
+          <a href={project.url} rel="noreferrer">{project.name}</a>
+          <p>{project.description}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="modeline" aria-hidden="true">-- PROJECTS -- 3 files</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects { padding-top: clamp(2.5rem, 8vw, 5rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  h1 { margin: 1rem 0 1.75rem; font-size: clamp(1.7rem, 5vw, 2.4rem); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { border-top: 1px solid var(--border); padding: 1.1rem 0; }
+  li:last-child { border-bottom: 1px solid var(--border); }
+  a::before { color: var(--accent); content: 'drwxr-xr-x  '; }
+  p { color: var(--muted); margin: 0.35rem 0 0; }
+  .modeline { background: var(--surface); color: var(--muted); font-size: 0.76rem; margin-top: 2rem; padding: 0.2rem 0.5rem; text-align: right; }
+</style>
