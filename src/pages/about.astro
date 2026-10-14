@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="about" description="SEONGHYUN HONG의 관심사와 기술 노트 소개">
+  <article class="about">
+    <p class="command"><span aria-hidden="true">$ </span>cat about.md</p>
+    <h1>about</h1>
+    <p>
+      플랫폼과 DevOps를 다루는 엔지니어입니다. 반복되는 운영 작업을 더 단순하고
+      관찰 가능하게 만드는 일에 관심이 있습니다.
+    </p>
+    <p>
+      GitLab, Kubernetes, Prometheus, Grafana, Loki, OpenTelemetry와 오픈 소스를
+      중심으로 배우고 기록합니다.
+    </p>
+    <p class="modeline" aria-label="Vim 상태 표시줄">about.md [+] utf-8  1,1  All</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .about { max-width: 44rem; padding-top: clamp(3rem, 8vw, 5.5rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  h1 { margin: 0 0 1.5rem; font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -0.05em; }
+  p:not(.command):not(.modeline) { color: var(--muted); }
+  .modeline { margin-top: 3rem; background: var(--border); color: var(--background); font-size: 0.78rem; padding: 0.15rem 0.4rem; }
+</style>
