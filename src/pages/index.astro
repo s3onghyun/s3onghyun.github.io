@@ -1,19 +1,20 @@
 ---
-const title = 'SEONGHYUN HONG';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Platform / DevOps engineer의 기술 노트" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
-      <p>Platform / DevOps engineer의 기술 노트.</p>
-    </main>
-  </body>
-</html>
+<BaseLayout>
+  <section class="intro">
+    <p class="eyebrow">NOTES ON INFRASTRUCTURE</p>
+    <h1>Platform / DevOps engineer의 기술 노트.</h1>
+    <p>
+      GitLab, Kubernetes, observability와 open source를 다룹니다.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro { padding-top: 5.5rem; }
+  .eyebrow { color: var(--accent); font: 0.78rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; }
+  h1 { max-width: 18ch; margin: 0.9rem 0 1.25rem; font-size: clamp(2rem, 7vw, 3.5rem); letter-spacing: -0.05em; line-height: 1.18; }
+  p:not(.eyebrow) { color: var(--muted); font-size: 1.08rem; }
+</style>

@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  description?: string;
+  title?: string;
+}
+
+const {
+  description = 'Platform / DevOps engineer의 기술 노트',
+  title = 'SEONGHYUN HONG',
+} = Astro.props;
+const pageTitle = title === 'SEONGHYUN HONG' ? title : `${title} | SEONGHYUN HONG`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#fafafa" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-name" href="/">SEONGHYUN HONG</a>
+        <span class="site-role">Platform / DevOps</span>
+      </header>
+      <main><slot /></main>
+      <footer class="site-footer">© {new Date().getFullYear()} SEONGHYUN HONG</footer>
+    </div>
+  </body>
+</html>
