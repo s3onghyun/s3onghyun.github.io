@@ -32,7 +32,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
             <h2><a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a></h2>
             <p>{post.data.description}</p>
             <ul class="tags" aria-label="태그">
-              {post.data.tags.map((tag) => <li>#{tag}</li>)}
+              {post.data.tags.map((tag) => <li><a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a></li>)}
             </ul>
           </article>
         </li>
