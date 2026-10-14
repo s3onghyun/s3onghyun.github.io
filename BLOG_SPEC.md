@@ -4,8 +4,10 @@ Personal developer blog of s3onghyun (SEONGHYUN HONG), Platform/DevOps engineer:
 GitLab (self-managed, Runner, Helm), Observability (Prometheus, Grafana, Loki, OpenTelemetry), Kubernetes, and open-source contribution.
 Target URL: https://s3onghyun.github.io/ (GitHub Pages user site). Note that https://s3onghyun.github.io/nvim-edu/ is an existing project site and must keep working.
 
-## Style
-- Clean, fast, developer-favourite style: text-first, generous whitespace, readable Korean typography (Pretendard or system font), monospace accents, light/dark mode, no cute decorations, no animations beyond subtle ones.
+## Style (owner preference, overrides any earlier styling)
+- Clean terminal / Vim-inspired look, not a generic dark-mode blog: monospace-first typography (e.g. JetBrains Mono / IBM Plex Mono with a readable Korean fallback), a terminal-window or Vim-buffer layout (prompt-style headings like `$ cat post.md` or a Vim statusline/modeline, `~` empty-line gutter, line-number feel where it reads well), a restrained terminal colour palette, and tasteful ASCII/ANSI-style art (e.g. an ASCII banner or small terminal art on the home page).
+- Must stay readable and accessible: sufficient contrast, real text (not images of text), responsive on mobile, no gimmicks that hurt reading. One calm theme is fine; a light/dark toggle is optional, not required.
+- Keyboard-friendly navigation is a plus (e.g. `j`/`k` to move between posts, `/` to search), as long as normal navigation still works.
 - Syntax highlighting for code blocks, copy button, heading anchors, table of contents on long posts.
 
 ## Stack
