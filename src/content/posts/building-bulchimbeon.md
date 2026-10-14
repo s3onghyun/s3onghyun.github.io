@@ -6,6 +6,7 @@ tags:
   - macos
   - developer-tools
   - open-source
+category: tech
 draft: true
 ---
 

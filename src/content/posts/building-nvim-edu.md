@@ -5,6 +5,7 @@ publishedAt: 2026-10-14
 tags:
   - neovim
   - open-source
+category: tech
 draft: true
 ---
 

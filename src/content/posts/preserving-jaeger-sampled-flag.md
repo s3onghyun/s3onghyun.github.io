@@ -6,6 +6,7 @@ tags:
   - opentelemetry
   - jaeger
   - open-source
+category: tech
 draft: true
 ---
 

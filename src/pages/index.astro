@@ -1,11 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
+import faceArt from '../assets/face-braille.txt?raw';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const recentPosts = (await getCollection('posts'))
-  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 3);
-const faceArt = `
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+const techPosts = posts.filter((post) => post.data.category === 'tech');
+const studyPosts = posts.filter((post) => post.data.category === 'study').slice(0, 2);
+const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0, 2);
+const legacyFaceArt = `
                         ygg@gggyy_
              _ya@@@ggyg@@@@@@@@@@@@gy_
            y@@@@@@@@@@@@@@@@@@@@@@@@@@g_
@@ -38,7 +41,7 @@ const faceArt = `
 <BaseLayout>
   <section class="intro">
     <div class="neofetch">
-      <pre class="face-art" aria-label="ASCII portrait of Seonghyun Hong" set:html={faceArt}></pre>
+      <pre class="face-art" aria-label="Braille portrait of Seonghyun Hong" set:html={faceArt}></pre>
       <div class="identity">
         <p class="command"><span aria-hidden="true">$ </span>neofetch --profile</p>
         <h1>SEONGHYUN HONG</h1>
@@ -52,18 +55,40 @@ const faceArt = `
     </div>
     <p class="summary">인프라를 만들고, 관찰하고, 기록합니다. 공개 자료를 바탕으로 한 기술 노트입니다.</p>
 
-    <section class="recent-posts" aria-labelledby="recent-posts-heading">
-      <p class="command"><span aria-hidden="true">$ </span>tail -n 3 ~/notes/posts</p>
-      <h2 id="recent-posts-heading">recent posts</h2>
+    <section class="recent-posts" aria-labelledby="tech-posts-heading">
+      <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/tech</p>
+      <h2 id="tech-posts-heading">tech notes</h2>
       <ul>
-        {recentPosts.map((post) => (
+        {techPosts.map((post) => (
           <li>
             <a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a>
             <span class="draft">DRAFT</span>
           </li>
         ))}
       </ul>
-      <a class="all-posts" href="/posts/">all posts →</a>
+      <a class="all-posts" href="/tech/">all tech notes →</a>
+    </section>
+
+    <section class="recent-posts compact" aria-labelledby="study-posts-heading">
+      <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/study</p>
+      <h2 id="study-posts-heading">study notes</h2>
+      {studyPosts.length > 0 ? (
+        <ul>{studyPosts.map((post) => (
+          <li><a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a></li>
+        ))}</ul>
+      ) : <p class="empty">No study notes published yet.</p>}
+      <a class="all-posts" href="/study/">study archive →</a>
+    </section>
+
+    <section class="recent-posts compact" aria-labelledby="life-posts-heading">
+      <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/life</p>
+      <h2 id="life-posts-heading">life notes</h2>
+      {lifePosts.length > 0 ? (
+        <ul>{lifePosts.map((post) => (
+          <li><a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a></li>
+        ))}</ul>
+      ) : <p class="empty">No life notes published yet.</p>}
+      <a class="all-posts" href="/life/">life archive →</a>
     </section>
   </section>
 </BaseLayout>
@@ -72,13 +97,13 @@ const faceArt = `
   .intro { padding-top: clamp(2.5rem, 8vw, 5.5rem); }
   .command { color: var(--accent); font-size: 0.9rem; }
   .neofetch { align-items: center; border-bottom: 1px solid var(--border); display: grid; gap: clamp(1.25rem, 5vw, 4rem); grid-template-columns: minmax(15rem, 23rem) minmax(0, 1fr); padding-bottom: 2.25rem; }
-  .face-art { color: var(--foreground); font-size: clamp(0.45rem, 1.15vw, 0.68rem); line-height: 1.16; margin: 0; overflow-x: auto; white-space: pre; }
+  .face-art { color: var(--foreground); font-family: "JetBrains Mono", "Noto Sans Symbols 2", "DejaVu Sans Mono", var(--mono); font-size: clamp(0.45rem, 1.15vw, 0.68rem); font-variant-ligatures: none; line-height: 1.16; margin: 0; overflow-x: auto; white-space: pre; }
   .identity { min-width: 0; }
   .identity .command { margin: 0 0 0.8rem; }
   h1 { margin: 0 0 1.25rem; font-size: clamp(1.45rem, 4vw, 2.25rem); letter-spacing: -0.05em; line-height: 1.3; }
   dl { margin: 0; }
-  dl div { border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent); display: grid; gap: 0.8rem; grid-template-columns: 5.5ch 1fr; padding: 0.45rem 0; }
-  dt { color: var(--accent); }
+  dl div { border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent); display: grid; gap: 0.8rem; grid-template-columns: minmax(7ch, max-content) minmax(0, 1fr); padding: 0.45rem 0; }
+  dt { color: var(--accent); min-width: 7ch; }
   dd { color: var(--muted); margin: 0; overflow-wrap: anywhere; }
   .summary { color: var(--muted); font-size: 1.02rem; margin: 1.5rem 0 0; }
   .recent-posts { border-top: 1px solid var(--border); margin-top: 3rem; max-width: 46rem; padding-top: 1.5rem; }
@@ -90,5 +115,7 @@ const faceArt = `
   li a { line-height: 1.55; }
   .draft { color: var(--accent); font-size: 0.7rem; flex: none; }
   .all-posts { display: inline-block; font-size: 0.86rem; margin-top: 1rem; }
+  .compact { margin-top: 2rem; }
+  .empty { color: var(--muted); font-size: 0.9rem; margin: 0; padding: 0.75rem 0; }
   @media (max-width: 45rem) { .neofetch { align-items: start; grid-template-columns: 1fr; } .face-art { font-size: clamp(0.42rem, 2vw, 0.65rem); } }
 </style>

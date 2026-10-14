@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  category: 'tech' | 'study' | 'life';
+  description: string;
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { category, description, posts } = Astro.props;
+const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+const groups = category === 'study'
+  ? Object.entries(posts.reduce<Record<string, CollectionEntry<'posts'>[]>>((result, post) => {
+    const series = post.data.series ?? 'Independent notes';
+    (result[series] ??= []).push(post);
+    return result;
+  }, {})).sort(([a], [b]) => a.localeCompare(b))
+  : [[category, posts]];
+---
+
+<section class="archive">
+  <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/{category}</p>
+  <h1>{category}/</h1>
+  <p class="notice">{description}</p>
+  {posts.length === 0 ? (
+    <p class="empty">No {category} notes published yet.</p>
+  ) : groups.map(([group, entries]) => (
+    <section class="group" aria-labelledby={`${category}-${group.replaceAll(' ', '-').toLowerCase()}`}>
+      {category === 'study' && <h2 id={`${category}-${group.replaceAll(' ', '-').toLowerCase()}`}>{group}</h2>}
+      <ol>
+        {entries.map((post, index) => (
+          <li>
+            <span class="line-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <article>
+              <div class="post-meta">
+                <time datetime={post.data.publishedAt.toISOString()}>{dateFormatter.format(post.data.publishedAt)}</time>
+                {post.data.draft && <span class="draft">DRAFT</span>}
+              </div>
+              <h3><a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a></h3>
+              <p>{post.data.description}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+  <p class="modeline" aria-hidden="true">-- {category.toUpperCase()} -- {posts.length} note{posts.length === 1 ? '' : 's'}</p>
+</section>
+
+<style>
+  .archive { padding-top: clamp(2.5rem, 8vw, 5rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  h1 { margin: 1rem 0 0.75rem; font-size: clamp(1.7rem, 5vw, 2.4rem); }
+  .notice, article > p, .empty { color: var(--muted); }
+  .notice { margin: 0 0 1.75rem; }
+  .empty { border-bottom: 1px solid var(--border); border-top: 1px solid var(--border); margin: 0; padding: 0.9rem 0; }
+  .group + .group { margin-top: 2.25rem; }
+  h2 { color: var(--accent); font-size: 1rem; margin: 0 0 0.5rem; }
+  ol { list-style: none; margin: 0; padding: 0; }
+  ol > li { border-top: 1px solid var(--border); display: grid; gap: 1rem; grid-template-columns: 2ch 1fr; padding: 1.25rem 0; }
+  ol > li:last-child { border-bottom: 1px solid var(--border); }
+  .line-number { color: var(--border); font-size: 0.82rem; padding-top: 0.2rem; }
+  .post-meta { align-items: center; color: var(--muted); display: flex; font-size: 0.78rem; gap: 0.75rem; }
+  h3 { font-size: 1.05rem; line-height: 1.55; margin: 0.35rem 0; }
+  article > p { margin: 0; }
+  .draft { border: 1px solid var(--border); color: var(--accent); font-size: 0.7rem; padding: 0.05rem 0.3rem; }
+  .modeline { background: var(--surface); color: var(--muted); font-size: 0.76rem; margin-top: 2rem; padding: 0.2rem 0.5rem; text-align: right; }
+</style>

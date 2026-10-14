@@ -29,7 +29,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonicalUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Noto+Sans+Symbols+2&amp;display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-full.css" />
     <title>{pageTitle}</title>
   </head>
@@ -39,6 +39,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
         <a class="site-name" href="/">s3onghyun@notes:~$</a>
         <nav aria-label="Primary navigation">
           <a href="/posts/">posts</a>
+          <a href="/tech/">tech</a>
+          <a href="/study/">study</a>
+          <a href="/life/">life</a>
           <a href="/tags/">tags</a>
           <a href="/projects/">projects</a>
           <a href="/about/">about</a>
