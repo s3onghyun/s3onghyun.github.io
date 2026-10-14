@@ -1,0 +1,36 @@
+---
+import StudyTree from './StudyTree.astro';
+
+interface Props {
+  enabled?: boolean;
+}
+
+const { enabled = true } = Astro.props;
+---
+
+<div class:list={{ 'study-layout': enabled }}>
+  {enabled && <>
+    <aside class="study-sidebar" aria-label="Study topics">
+      <StudyTree />
+    </aside>
+    <details class="study-toggle">
+      <summary>▸ study topics</summary>
+      <StudyTree />
+    </details>
+  </>}
+  <div class="study-content"><slot /></div>
+</div>
+
+<style>
+  .study-layout { display: grid; gap: clamp(2rem, 5vw, 4rem); grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); }
+  .study-sidebar { border-right: 1px solid var(--border); margin-top: clamp(2.5rem, 8vw, 5rem); padding: 0 1.2rem 1rem 0; }
+  .study-toggle { display: none; }
+  .study-content { min-width: 0; }
+  @media (max-width: 45rem) {
+    .study-layout { display: block; }
+    .study-sidebar { display: none; }
+    .study-toggle { border-bottom: 1px solid var(--border); display: block; margin-top: 1.5rem; padding: 0.6rem 0; }
+    .study-toggle summary { color: var(--accent); cursor: pointer; font-size: 0.78rem; }
+    .study-toggle > :global(.tree-content) { margin-top: 0.7rem; }
+  }
+</style>

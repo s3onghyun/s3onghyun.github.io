@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import CategoryArchive from '../components/CategoryArchive.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import StudyLayout from '../components/StudyLayout.astro';
 
 const posts = (await getCollection('posts'))
   .filter((post) => post.data.category === 'study')
@@ -9,5 +10,7 @@ const posts = (await getCollection('posts'))
 ---
 
 <BaseLayout title="Study" description="Study notes, grouped by series.">
-  <CategoryArchive category="study" description="Algorithms, Go, and other notes grouped by series." {posts} />
+  <StudyLayout>
+    <CategoryArchive category="study" description="Algorithms, Go, and other notes grouped by series." {posts} />
+  </StudyLayout>
 </BaseLayout>

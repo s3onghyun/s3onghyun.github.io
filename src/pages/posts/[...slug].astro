@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import StudyLayout from '../../components/StudyLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -25,6 +26,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
+  <StudyLayout enabled={post.data.category === 'study'}>
   <article class="post">
     <p class="command"><span aria-hidden="true">$ </span>cat ~/notes/posts/{post.id}</p>
     <header>
@@ -41,6 +43,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
     <div class="prose"><Content /></div>
     <p class="modeline" aria-hidden="true">-- DRAFT -- {post.id}.md</p>
   </article>
+  </StudyLayout>
 </BaseLayout>
 
 <style>
