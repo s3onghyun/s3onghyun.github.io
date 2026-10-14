@@ -4,17 +4,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout>
   <section class="intro">
-    <p class="eyebrow">NOTES ON INFRASTRUCTURE</p>
-    <h1>Platform / DevOps engineer의 기술 노트.</h1>
+    <p class="command"><span aria-hidden="true">$ </span>cat README.md</p>
+    <pre class="banner" aria-label="SEONGHYUN HONG">╭──────────────────────────────────╮
+│          SEONGHYUN HONG           │
+│      platform / devops notes      │
+╰──────────────────────────────────╯</pre>
+    <h1>인프라를 만들고, 관찰하고, 기록합니다.</h1>
     <p>
-      GitLab, Kubernetes, observability와 open source를 다룹니다.
+      GitLab, Kubernetes, observability와 open source에 관한 기술 노트입니다.
     </p>
   </section>
 </BaseLayout>
 
 <style>
-  .intro { padding-top: 5.5rem; }
-  .eyebrow { color: var(--accent); font: 0.78rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; }
-  h1 { max-width: 18ch; margin: 0.9rem 0 1.25rem; font-size: clamp(2rem, 7vw, 3.5rem); letter-spacing: -0.05em; line-height: 1.18; }
-  p:not(.eyebrow) { color: var(--muted); font-size: 1.08rem; }
+  .intro { padding-top: clamp(3rem, 10vw, 7rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  .banner { margin: 1.25rem 0 2.5rem; color: var(--foreground); font: inherit; line-height: 1.45; overflow-x: auto; }
+  h1 { max-width: 20ch; margin: 0 0 1.25rem; font-size: clamp(1.8rem, 6vw, 3.1rem); letter-spacing: -0.05em; line-height: 1.3; }
+  p:not(.command) { color: var(--muted); font-size: 1.08rem; }
 </style>

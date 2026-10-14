@@ -20,7 +20,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#fafafa" />
+    <meta name="theme-color" content="#101512" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -31,8 +31,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <body>
     <div class="site-shell">
       <header class="site-header">
-        <a class="site-name" href="/">SEONGHYUN HONG</a>
-        <span class="site-role">Platform / DevOps</span>
+        <a class="site-name" href="/">s3onghyun@notes:~$</a>
+        <nav aria-label="주요 탐색">
+          <a href="/posts/">posts</a>
+          <a href="/projects/">projects</a>
+          <a href="/about/">about</a>
+        </nav>
       </header>
       <main><slot /></main>
       <footer class="site-footer">© {new Date().getFullYear()} SEONGHYUN HONG</footer>
