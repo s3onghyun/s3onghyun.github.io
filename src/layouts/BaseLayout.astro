@@ -20,27 +20,41 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#101512" />
+    <meta name="theme-color" content="#f7f6ef" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="application/rss+xml" title="SEONGHYUN HONG" href="/rss.xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-full.css" />
     <title>{pageTitle}</title>
   </head>
   <body>
     <div class="site-shell">
       <header class="site-header">
         <a class="site-name" href="/">s3onghyun@notes:~$</a>
-        <nav aria-label="주요 탐색">
+        <nav aria-label="Primary navigation">
           <a href="/posts/">posts</a>
+          <a href="/tags/">tags</a>
           <a href="/projects/">projects</a>
           <a href="/about/">about</a>
         </nav>
       </header>
       <main><slot /></main>
-      <footer class="site-footer">© {new Date().getFullYear()} SEONGHYUN HONG</footer>
+      <footer class="site-footer">© {new Date().getFullYear()} SEONGHYUN HONG <span aria-hidden="true">·</span> press j / k to scroll</footer>
     </div>
+    <script>
+      document.addEventListener('keydown', (event) => {
+        const target = event.target as HTMLElement | null;
+        if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey || target?.matches('input, textarea, select, [contenteditable]')) return;
+        if (event.key === 'j' || event.key === 'k') {
+          window.scrollBy({ top: window.innerHeight * (event.key === 'j' ? 0.7 : -0.7), behavior: 'smooth' });
+        }
+      });
+    </script>
   </body>
 </html>

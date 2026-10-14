@@ -1,19 +1,21 @@
 :root {
-  color-scheme: dark;
-  --background: #101512;
-  --surface: #151d18;
-  --foreground: #d7e2d4;
-  --muted: #93a293;
-  --border: #34443a;
-  --accent: #9fdb72;
-  --selection: #30452f;
-  font-family: "JetBrains Mono", "IBM Plex Mono", "Noto Sans KR", "Apple SD Gothic Neo", monospace;
-  line-height: 1.75;
+  color-scheme: light;
+  --background: #f7f6ef;
+  --surface: #ecefe4;
+  --foreground: #1d3026;
+  --muted: #5a6d60;
+  --border: #789080;
+  --accent: #146c4a;
+  --selection: #dbe8d6;
+  --mono: "JetBrains Mono", "D2Coding", "Noto Sans Mono CJK KR", "Noto Sans KR", monospace;
+  font-family: var(--mono);
+  font-synthesis: none;
+  line-height: 1.8;
 }
 
 * { box-sizing: border-box; }
 
-html { background: var(--background); }
+html { background: var(--background); scroll-behavior: smooth; }
 
 ::selection { background: var(--selection); color: var(--foreground); }
 
@@ -21,28 +23,29 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
+  text-rendering: optimizeLegibility;
 }
 
 a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.18em; }
 a:hover { color: var(--accent); }
 
 .site-shell {
-  width: min(100% - 2rem, 52rem);
+  width: min(100% - 2rem, 70rem);
   margin: 0 auto;
   min-height: 100vh;
-  padding: 1.25rem 1.5rem 3rem 3.75rem;
+  padding: 1.25rem 2rem 3rem 4.25rem;
   position: relative;
-  background: linear-gradient(90deg, transparent 2.8rem, var(--border) 2.8rem, var(--border) calc(2.8rem + 1px), transparent calc(2.8rem + 1px));
+  background: linear-gradient(90deg, transparent 3.1rem, color-mix(in srgb, var(--border) 55%, transparent) 3.1rem, color-mix(in srgb, var(--border) 55%, transparent) calc(3.1rem + 1px), transparent calc(3.1rem + 1px));
 }
 
 .site-shell::before {
-  color: var(--border);
-  content: "~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A";
+  color: color-mix(in srgb, var(--border) 70%, transparent);
+  content: "~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A ~\A";
   font-size: 0.9rem;
-  left: 0.85rem;
-  line-height: 1.75;
+  left: 1rem;
+  line-height: 1.8;
   position: absolute;
-  top: 5.5rem;
+  top: 5.9rem;
   white-space: pre;
 }
 
@@ -51,18 +54,20 @@ a:hover { color: var(--accent); }
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  padding-bottom: 1rem;
+  padding: 0.1rem 0 1rem;
   border-bottom: 1px solid var(--border);
 }
 
-.site-name { font-size: 0.9rem; font-weight: 700; text-decoration: none; }
-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
-nav a { color: var(--muted); font-size: 0.8rem; }
+.site-name { font-size: 0.82rem; font-weight: 700; letter-spacing: -0.03em; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+nav a { color: var(--muted); font-size: 0.76rem; }
 nav a::before { color: var(--accent); content: ":"; }
-.site-footer { color: var(--muted); font-size: 0.78rem; margin-top: 5rem; }
+.site-footer { color: var(--muted); font-size: 0.72rem; margin-top: 5rem; }
+
+pre, code { font-family: var(--mono); font-variant-ligatures: none; }
 
 @media (max-width: 30rem) {
-  .site-shell { width: 100%; padding-left: 2.6rem; padding-right: 1rem; background-position-x: 1.75rem; }
-  .site-shell::before { left: 0.55rem; }
+  .site-shell { width: 100%; padding-left: 2.8rem; padding-right: 1rem; background-position-x: 1.95rem; }
+  .site-shell::before { left: 0.6rem; }
   .site-header { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
 }

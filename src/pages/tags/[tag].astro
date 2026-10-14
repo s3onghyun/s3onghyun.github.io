@@ -35,7 +35,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
     <p class="command"><span aria-hidden="true">$ </span>rg --files --glob '*{tag}*' ~/notes/posts</p>
     <p class="eyebrow">tag:</p>
     <h1>#{tag}</h1>
-    <p class="notice">이 태그가 붙은 공개 자료 기반 초안 {posts.length}개</p>
+    <p class="notice">{posts.length} draft note{posts.length === 1 ? '' : 's'} based on public material</p>
     <ol>
       {posts.map((post, index) => (
         <li>
@@ -51,7 +51,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
         </li>
       ))}
     </ol>
-    <p><a class="back" href="/posts/">← posts/로 돌아가기</a></p>
+    <p><a class="back" href="/posts/">← back to posts</a></p>
     <p class="modeline" aria-hidden="true">-- TAG -- #{tag} · {posts.length} drafts</p>
   </section>
 </BaseLayout>

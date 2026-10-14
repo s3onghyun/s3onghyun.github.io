@@ -17,7 +17,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   <section class="posts">
     <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/posts</p>
     <h1>posts/</h1>
-    <p class="notice">공개 자료를 바탕으로 작성 중인 초안입니다.</p>
+    <p class="notice">Draft notes based on public material.</p>
     <ol>
       {posts.map((post, index) => (
         <li>
@@ -31,7 +31,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
             </div>
             <h2><a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a></h2>
             <p>{post.data.description}</p>
-            <ul class="tags" aria-label="태그">
+            <ul class="tags" aria-label="Tags">
               {post.data.tags.map((tag) => <li><a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a></li>)}
             </ul>
           </article>

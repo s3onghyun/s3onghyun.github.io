@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('posts');
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))]
+  .sort((a, b) => a.localeCompare(b))
+  .map((tag) => ({
+    name: tag,
+    count: posts.filter((post) => post.data.tags.includes(tag)).length,
+  }));
+---
+
+<BaseLayout title="Tags" description="Browse notes by tag.">
+  <section class="tags-index">
+    <p class="command"><span aria-hidden="true">$ </span>find ~/notes/posts -type f -print | xargs tags</p>
+    <h1>tags/</h1>
+    <p class="notice">Browse the notes by topic.</p>
+    <ul>
+      {tags.map((tag, index) => (
+        <li>
+          <span class="line-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <a href={`/tags/${encodeURIComponent(tag.name)}/`}>#{tag.name}</a>
+          <span class="count">{tag.count} note{tag.count === 1 ? '' : 's'}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="modeline" aria-hidden="true">-- TAGS -- {tags.length} entries</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .tags-index { max-width: 48rem; padding-top: clamp(2.5rem, 8vw, 5rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  h1 { margin: 1rem 0 0.75rem; font-size: clamp(1.7rem, 5vw, 2.4rem); }
+  .notice { color: var(--muted); margin: 0 0 1.75rem; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { align-items: baseline; border-top: 1px solid var(--border); display: grid; gap: 1rem; grid-template-columns: 2ch minmax(0, 1fr) auto; padding: 0.9rem 0; }
+  li:last-child { border-bottom: 1px solid var(--border); }
+  .line-number, .count { color: var(--muted); font-size: 0.78rem; }
+  .count { white-space: nowrap; }
+  .modeline { background: var(--surface); color: var(--muted); font-size: 0.76rem; margin-top: 2rem; padding: 0.2rem 0.5rem; text-align: right; }
+</style>
