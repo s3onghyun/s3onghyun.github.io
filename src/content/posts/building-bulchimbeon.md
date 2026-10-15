@@ -9,7 +9,7 @@ tags:
   - developer-tools
   - open-source
 category: tech
-draft: true
+draft: false
 ---
 
 # 불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법

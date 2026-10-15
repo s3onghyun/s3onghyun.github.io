@@ -9,7 +9,7 @@ tags:
   - codemirror
   - open-source
 category: tech
-draft: true
+draft: false
 ---
 
 # nvim-edu를 만들며: 브라우저 Vim 연습장을 진짜 Neovim에 맞추기
