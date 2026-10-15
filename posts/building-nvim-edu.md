@@ -150,3 +150,7 @@ CI는 chromium, firefox, webkit 세 브라우저에서 모든 레벨 답안과 �
 - 에뮬레이터 패치: [patches/](https://github.com/s3onghyun/nvim-edu/tree/main/patches?ref=blog)
 
 `:wq`에서 멈춰 있던 사람이 만든 연습장이라, 비슷한 자리에 있는 사람에게 먼저 쓸모가 있으면 좋겠다.
+
+## Related posts
+
+- [불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법](https://s3onghyun.github.io/posts/building-bulchimbeon/)

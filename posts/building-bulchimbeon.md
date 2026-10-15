@@ -172,3 +172,7 @@ brew install --cask s3onghyun/tap/bulchimbeon
 - 먼저 나온 비슷한 앱: [Adrafinil](https://github.com/kageroumado/adrafinil)
 
 hook으로 더 정확하게 맞물리길 원하고 macOS 26.4 이상을 쓴다면 Adrafinil이 맞고, 설치 흔적 없이 macOS 13부터 쓰고 싶다면 불침번이 맞다.
+
+## Related posts
+
+- [nvim-edu를 만들며: 브라우저 Vim 연습장을 진짜 Neovim에 맞추기](https://s3onghyun.github.io/posts/building-nvim-edu/)
