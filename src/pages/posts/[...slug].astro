@@ -61,8 +61,24 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   .prose :global(h1) { display: none; }
   .prose :global(h2) { font-size: 1.25rem; margin-top: 2.25rem; }
   .prose :global(a) { color: var(--accent); }
-  .prose :global(code) { background: var(--surface); color: var(--accent); padding: 0.1em 0.3em; }
-  .prose :global(pre) { background: var(--surface); border: 1px solid var(--border); overflow-x: auto; padding: 1rem; }
-  .prose :global(pre code) { padding: 0; }
+  .prose :global(code) { background: var(--surface); border: 1px solid color-mix(in srgb, var(--border) 65%, transparent); border-radius: 0.15rem; color: var(--accent); padding: 0.1em 0.3em; }
+  .prose :global(pre) { background: var(--surface); border: 1px solid var(--border); border-radius: 0.2rem; line-height: 1.65; overflow-x: auto; padding: 1rem; }
+  .prose :global(pre code) { background: transparent; border: 0; color: inherit; padding: 0; }
+  .prose :global(blockquote) { background: color-mix(in srgb, var(--surface) 82%, var(--accent) 18%); border-left: 0.3rem solid var(--accent); color: var(--quote-text); margin: 1.5rem 0; padding: 0.8rem 1rem 0.8rem 2.35rem; position: relative; }
+  .prose :global(blockquote::before) { color: var(--accent); content: ">"; font-weight: 700; left: 0.85rem; position: absolute; }
+  .prose :global(blockquote > :first-child) { margin-top: 0; }
+  .prose :global(blockquote > :last-child) { margin-bottom: 0; }
+  .prose :global(table) { border: 1px solid var(--border); border-collapse: collapse; display: block; margin: 1.5rem 0; max-width: 100%; overflow-x: auto; width: max-content; }
+  .prose :global(th), .prose :global(td) { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; vertical-align: top; }
+  .prose :global(th) { background: color-mix(in srgb, var(--surface) 72%, var(--accent) 28%); color: var(--foreground); font-weight: 700; }
+  .prose :global(tbody tr:nth-child(even)) { background: color-mix(in srgb, var(--surface) 78%, transparent); }
+  .prose :global(hr) { border: 0; border-top: 1px dashed var(--border); margin: 2.5rem 0; }
+  .prose :global(ul:has(input[type="checkbox"])) { list-style: none; padding-left: 0; }
+  .prose :global(input[type="checkbox"]) { accent-color: var(--accent); margin: 0 0.55rem 0 0; }
+  .prose :global(input[type="checkbox"]:checked) { filter: none; }
   .modeline { background: var(--surface); color: var(--muted); font-size: 0.76rem; margin-top: 3rem; padding: 0.2rem 0.5rem; text-align: right; }
+
+  @media (max-width: 30rem) {
+    .prose :global(th), .prose :global(td) { padding: 0.45rem 0.65rem; }
+  }
 </style>

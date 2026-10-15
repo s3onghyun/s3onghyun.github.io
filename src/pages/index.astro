@@ -8,6 +8,7 @@ import { websiteJsonLd } from '../lib/seo';
 const posts = (await getCollection('posts'))
   .filter(isPublished)
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+const latestPosts = posts.slice(0, 5);
 const techPosts = posts.filter((post) => post.data.category === 'tech');
 const studyPosts = posts.filter((post) => post.data.category === 'study').slice(0, 2);
 const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0, 2);
@@ -30,6 +31,24 @@ const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0,
     </div>
     <p class="summary">인프라를 만들고, 관찰하고, 기록합니다. 공개 자료를 바탕으로 한 기술 노트입니다.</p>
 
+    <section class="recent-posts latest-posts" aria-labelledby="latest-posts-heading">
+      <p class="command"><span aria-hidden="true">$ </span>ls -lt ~/notes | head</p>
+      <h2 id="latest-posts-heading">latest notes</h2>
+      {latestPosts.length > 0 ? (
+        <ul>{latestPosts.map((post) => (
+          <li>
+            <time datetime={post.data.publishedAt.toISOString()}>{post.data.publishedAt.toLocaleDateString('ko-KR')}</time>
+            <span class="category">#{post.data.category}</span>
+            <div class="note-summary">
+              <a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a>
+              <span>{post.data.description}</span>
+            </div>
+          </li>
+        ))}</ul>
+      ) : <p class="empty">No notes published yet.</p>}
+      <a class="all-posts" href="/posts/">all notes →</a>
+    </section>
+
     <section class="recent-posts" aria-labelledby="tech-posts-heading">
       <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/tech</p>
       <h2 id="tech-posts-heading">tech notes</h2>
@@ -37,7 +56,7 @@ const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0,
         <ul>{techPosts.map((post) => (
           <li>
             <a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a>
-            <span class="draft">DRAFT</span>
+            {post.data.draft && <span class="draft">DRAFT</span>}
           </li>
         ))}</ul>
       ) : <p class="empty">No tech notes published yet.</p>}
@@ -90,7 +109,13 @@ const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0,
   li a { line-height: 1.55; }
   .draft { color: var(--accent); font-size: 0.7rem; flex: none; }
   .all-posts { display: inline-block; font-size: 0.86rem; margin-top: 1rem; }
+  .latest-posts li { align-items: start; display: grid; grid-template-columns: 7.5rem 5.5rem minmax(0, 1fr); }
+  .latest-posts time, .category { color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
+  .category { color: var(--accent); }
+  .note-summary { min-width: 0; }
+  .note-summary a, .note-summary span { display: block; }
+  .note-summary span { color: var(--muted); font-size: 0.82rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .compact { margin-top: 2rem; }
   .empty { color: var(--muted); font-size: 0.9rem; margin: 0; padding: 0.75rem 0; }
-  @media (max-width: 45rem) { .neofetch { align-items: start; grid-template-columns: 1fr; } .face-art { font-size: clamp(0.42rem, 2vw, 0.65rem); } }
+  @media (max-width: 45rem) { .neofetch { align-items: start; grid-template-columns: 1fr; } .face-art { font-size: clamp(0.42rem, 2vw, 0.65rem); } .latest-posts li { gap: 0.25rem 0.6rem; grid-template-columns: 1fr auto; } .note-summary { grid-column: 1 / -1; } }
 </style>
