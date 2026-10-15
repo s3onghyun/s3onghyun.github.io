@@ -7,8 +7,9 @@
     "build": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
-    "test:seo": "astro build && node tests/seo-output.test.mjs",
-    "test:theme": "node tests/theme-init.test.mjs"
+    "test:seo": "astro build && node tests/seo-output.test.mjs && node tests/structured-data.test.mjs && node tests/sitemap.test.mjs",
+    "test:theme": "node tests/theme-init.test.mjs",
+    "test": "npm run test:seo && npm run test:theme"
   },
   "dependencies": {
     "astro": "^5.0.0"
