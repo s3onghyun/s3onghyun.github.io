@@ -1,0 +1,19 @@
+# SEONGHYUN HONG
+
+> Platform / DevOps engineer의 기술 노트
+
+Seonghyun Hong writes Korean and English notes about infrastructure, DevOps, observability, and open source.
+
+## Author
+
+- [GitHub](https://github.com/s3onghyun)
+
+## Categories
+
+- [Tech](https://s3onghyun.github.io/tech/): Infrastructure, DevOps, and open-source notes.
+- [Study](https://s3onghyun.github.io/study/): Learning notes and series.
+- [Life](https://s3onghyun.github.io/life/): Books and escape-room notes.
+
+## Published posts
+
+- Published posts will be listed here as they are released.
