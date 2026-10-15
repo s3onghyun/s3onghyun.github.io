@@ -1,21 +1,28 @@
 ---
 import '../styles/global.css';
+import { siteConfig } from '../config/site';
 
 interface Props {
   description?: string;
+  lang?: 'ko' | 'en';
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
   title?: string;
 }
 
 const {
   description = 'Platform / DevOps engineer의 기술 노트',
+  lang = 'ko',
+  structuredData,
   title = 'SEONGHYUN HONG',
 } = Astro.props;
 const pageTitle = title === 'SEONGHYUN HONG' ? title : `${title} | SEONGHYUN HONG`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(siteConfig.defaultOgImage, Astro.site);
+const jsonLd = structuredData && JSON.stringify(structuredData).replaceAll('<', '\\u003c');
 ---
 
 <!doctype html>
-<html lang="ko">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -27,6 +34,14 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    {siteConfig.verification.google && <meta name="google-site-verification" content={siteConfig.verification.google} />}
+    {siteConfig.verification.naver && <meta name="naver-site-verification" content={siteConfig.verification.naver} />}
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />

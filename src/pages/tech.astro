@@ -2,12 +2,13 @@
 import { getCollection } from 'astro:content';
 import CategoryArchive from '../components/CategoryArchive.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbJsonLd } from '../lib/seo';
 
 const posts = (await getCollection('posts'))
   .filter((post) => post.data.category === 'tech')
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
 ---
 
-<BaseLayout title="Tech" description="Infrastructure, DevOps, and open-source notes.">
+<BaseLayout title="Tech" description="Infrastructure, DevOps, and open-source notes." structuredData={breadcrumbJsonLd('Tech', '/tech/')}>
   <CategoryArchive category="tech" description="Infrastructure, DevOps, and open-source notes." {posts} />
 </BaseLayout>

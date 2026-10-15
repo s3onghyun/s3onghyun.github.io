@@ -6,6 +6,8 @@ const postSchema = z.object({
   publishedAt: z.coerce.date(),
   tags: z.array(z.string()),
   category: z.enum(['tech', 'study', 'life']),
+  language: z.enum(['ko', 'en']).default('ko'),
+  updatedAt: z.coerce.date().optional(),
   series: z.string().optional(),
   draft: z.boolean().default(true),
 });

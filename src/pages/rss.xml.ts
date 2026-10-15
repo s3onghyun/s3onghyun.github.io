@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
+import { isPublished, postUrl } from '../lib/content';
 
 const escapeXml = (value: string) => value
   .replaceAll('&', '&amp;')
@@ -10,12 +11,12 @@ const escapeXml = (value: string) => value
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL('https://s3onghyun.github.io');
-  const posts = (await getCollection('posts')).sort(
+  const posts = (await getCollection('posts')).filter(isPublished).sort(
     (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
   );
   const updatedAt = posts[0]?.data.publishedAt ?? new Date();
   const items = posts.map((post) => {
-    const url = new URL(`/posts/${post.id.replace(/\.md$/, '')}/`, baseUrl).href;
+    const url = new URL(postUrl(post), baseUrl).href;
 
     return `
       <item>

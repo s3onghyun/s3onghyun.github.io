@@ -2,15 +2,18 @@
 import { getCollection } from 'astro:content';
 import faceArt from '../assets/face-ascii-v2.txt?raw';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { isPublished } from '../lib/content';
+import { websiteJsonLd } from '../lib/seo';
 
 const posts = (await getCollection('posts'))
+  .filter(isPublished)
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
 const techPosts = posts.filter((post) => post.data.category === 'tech');
 const studyPosts = posts.filter((post) => post.data.category === 'study').slice(0, 2);
 const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0, 2);
 ---
 
-<BaseLayout>
+<BaseLayout structuredData={websiteJsonLd()}>
   <section class="intro">
     <div class="neofetch">
       <pre class="face-art" aria-label="ASCII portrait of Seonghyun Hong">{faceArt}</pre>

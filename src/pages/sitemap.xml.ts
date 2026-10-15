@@ -1,17 +1,18 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
+import { isPublished, postModifiedAt, postUrl } from '../lib/content';
 
-const staticPaths = ['/', '/about/', '/projects/', '/posts/'];
+const staticPaths = ['/', '/about/', '/projects/', '/posts/', '/tech/', '/study/', '/life/', '/tags/'];
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL('https://s3onghyun.github.io');
-  const posts = await getCollection('posts');
+  const posts = (await getCollection('posts')).filter(isPublished);
   const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
   const entries = [
     ...staticPaths.map((path) => ({ path })),
     ...posts.map((post) => ({
-      path: `/posts/${post.id.replace(/\.md$/, '')}/`,
-      lastmod: post.data.publishedAt,
+      path: postUrl(post),
+      lastmod: postModifiedAt(post),
     })),
     ...tags.map((tag) => ({ path: `/tags/${encodeURIComponent(tag)}/` })),
   ];
