@@ -70,4 +70,16 @@ const sitemap = await readDist('sitemap.xml');
 assert.match(sitemap, /building-bulchimbeon/);
 assert.match(sitemap, /building-nvim-edu/);
 assert.doesNotMatch(sitemap, /preserving-jaeger/);
+
+// Related posts: published siblings are linked at the end of each post (HTML and .md); drafts never are.
+for (const [slug, other] of [['building-bulchimbeon', 'building-nvim-edu'], ['building-nvim-edu', 'building-bulchimbeon']]) {
+  const related = (await readDist(`posts/${slug}/index.html`)).match(/<nav class="related[^>]*>([\s\S]*?)<\/nav>/);
+  assert.ok(related, `${slug} has a related posts section`);
+  assert.match(related[1], new RegExp(`href="/posts/${other}/"`));
+  assert.doesNotMatch(related[1], new RegExp(`/posts/${slug}/|preserving-jaeger-sampled-flag`));
+  assert.ok((related[1].match(/<li/g) ?? []).length <= 3);
+  const markdown = await readDist(`posts/${slug}.md`);
+  assert.match(markdown, new RegExp(`## Related posts\\n\\n- \\[[^\\]]+\\]\\(https://s3onghyun\\.github\\.io/posts/${other}/\\)`));
+  assert.doesNotMatch(markdown.split('## Related posts')[1], /preserving-jaeger-sampled-flag/);
+}
 console.log('SEO output checks passed');

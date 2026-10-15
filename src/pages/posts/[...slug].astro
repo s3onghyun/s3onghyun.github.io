@@ -3,22 +3,23 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StudyLayout from '../../components/StudyLayout.astro';
 import { postJsonLd } from '../../lib/seo';
-import { postMarkdownUrl } from '../../lib/content';
+import { postMarkdownUrl, postUrl, relatedPosts } from '../../lib/content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
 
   return posts.map((post) => ({
     params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post },
+    props: { post, related: relatedPosts(post, posts) },
   }));
 }
 
 interface Props {
   post: CollectionEntry<'posts'>;
+  related: CollectionEntry<'posts'>[];
 }
 
-const { post } = Astro.props;
+const { post, related } = Astro.props;
 const { Content } = await post.render();
 const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   year: 'numeric',
@@ -52,6 +53,10 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
       <h2 id="sources-heading">Sources</h2>
       <ul>{post.data.sources.map((source) => <li><a href={source.url}>{source.title}</a></li>)}</ul>
     </section>}
+    {related.length > 0 && <nav class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">Related posts</h2>
+      <ul>{related.map((other) => <li><a href={postUrl(other)}>{other.data.title}</a> <span>{other.data.description}</span></li>)}</ul>
+    </nav>}
     <p class="modeline" aria-hidden="true">-- DRAFT -- {post.id}.md</p>
   </article>
   </StudyLayout>
@@ -75,6 +80,14 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   .sources { border-top: 1px dashed var(--border); margin-top: 2.5rem; padding-top: 1.25rem; }
   .sources h2 { font-size: 1.1rem; }
   .sources a { color: var(--accent); }
+  .related { border-top: 1px dashed var(--border); margin-top: 2.5rem; padding-top: 1.25rem; }
+  .related::before { color: var(--accent); content: '$ grep -l --tags ~/notes/posts'; display: block; font-size: 0.78rem; margin-bottom: 0.55rem; }
+  .related h2 { font-size: 1.1rem; margin-top: 0; }
+  .related ul { list-style: none; margin: 0; padding: 0; }
+  .related li { margin: 0.5rem 0; }
+  .related li::before { color: var(--muted); content: '> '; }
+  .related a { color: var(--accent); }
+  .related span { color: var(--muted); display: block; font-size: 0.85rem; padding-left: 1.2rem; }
   .prose :global(h1) { display: none; }
   .prose :global(h2) { font-size: 1.25rem; margin-top: 2.25rem; }
   .prose :global(a) { color: var(--accent); }
