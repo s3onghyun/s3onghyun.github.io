@@ -8,6 +8,13 @@ const postSchema = z.object({
   category: z.enum(['tech', 'study', 'life']),
   language: z.enum(['ko', 'en']).default('ko'),
   updatedAt: z.coerce.date().optional(),
+  testedWith: z.array(z.string()).optional(),
+  sources: z.array(z.object({
+    title: z.string(),
+    url: z.string().url(),
+  })).optional(),
+  summary: z.string().optional(),
+  appliesTo: z.string().optional(),
   series: z.string().optional(),
   draft: z.boolean().default(true),
 });

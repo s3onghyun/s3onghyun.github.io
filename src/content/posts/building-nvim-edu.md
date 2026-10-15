@@ -2,6 +2,16 @@
 title: "nvim-edu를 만들며: 브라우저 Vim 연습장을 진짜 Neovim에 맞추기"
 description: 브라우저에서 Vim·Neovim·tmux 단축키를 연습하는 nvim-edu의 제작 기록. CodeMirror Vim 에뮬레이터와 실제 Neovim 사이의 선택, nvim --headless와 동작을 비교하는 CI, 에뮬레이터 패치, vim.wasm 진짜 Vim 모드, tmux 시뮬레이터를 정리했다.
 publishedAt: 2026-10-14
+updatedAt: 2026-10-14
+summary: 브라우저 Vim 연습기의 동작은 실제 Neovim 0.11.0과 같은 키 입력을 비교하는 테스트로 계속 맞출 수 있다.
+appliesTo: CodeMirror Vim 에뮬레이터를 실제 Neovim 동작에 맞춰야 하는 브라우저 연습기
+testedWith:
+  - Neovim 0.11.0
+sources:
+  - title: nvim-edu repository
+    url: https://github.com/s3onghyun/nvim-edu
+  - title: nvim-edu Neovim differential test
+    url: https://github.com/s3onghyun/nvim-edu/blob/main/tests/nvim-diff.mjs
 tags:
   - neovim
   - vim

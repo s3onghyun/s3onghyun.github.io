@@ -2,6 +2,17 @@
 title: "불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법"
 description: AI 에이전트가 실제로 일하는 동안에만 macOS 잠자기를 막는 메뉴바 앱 불침번의 제작 기록. caffeinate 자식 프로세스와 CPU로 작업 여부를 판단한 방법, 덮개 모드 원복 감시병, 발열·배터리 안전장치, 실기기에서 드러난 버그를 정리했다.
 publishedAt: 2026-10-14
+updatedAt: 2026-10-14
+summary: caffeinate 자식 프로세스와 CPU를 함께 관찰하면 Claude Code가 실제로 일하는 동안에만 macOS 잠자기 방지를 유지할 수 있다.
+appliesTo: hook·데몬·root 도우미를 설치하지 않고 macOS에서 Claude Code 작업을 관찰하려는 경우
+testedWith:
+  - macOS 13–15
+  - Claude Code 2.1.296
+sources:
+  - title: Bulchimbeon repository
+    url: https://github.com/s3onghyun/bulchimbeon
+  - title: Bulchimbeon compatibility documentation
+    url: https://github.com/s3onghyun/bulchimbeon/blob/main/docs/compatibility.md
 tags:
   - macos
   - swift

@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StudyLayout from '../../components/StudyLayout.astro';
 import { postJsonLd } from '../../lib/seo';
+import { postMarkdownUrl } from '../../lib/content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -26,7 +27,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
 });
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} lang={post.data.language} structuredData={postJsonLd(post)}>
+<BaseLayout title={post.data.title} description={post.data.description} lang={post.data.language} structuredData={postJsonLd(post)} markdownUrl={postMarkdownUrl(post)}>
   <StudyLayout enabled={post.data.category === 'study'}>
   <article class="post">
     <p class="command"><span aria-hidden="true">$ </span>cat ~/notes/posts/{post.id}</p>
@@ -41,7 +42,16 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
         {post.data.tags.map((tag) => <li><a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a></li>)}
       </ul>
     </header>
+    {(post.data.summary || post.data.appliesTo || post.data.testedWith?.length || post.data.updatedAt || post.data.publishedAt) && <section class="citation-box" aria-label="Post verification details">
+      {post.data.summary && <p><strong>결론</strong> {post.data.summary}</p>}
+      {(post.data.appliesTo || post.data.testedWith?.length) && <p><strong>적용</strong> {[post.data.appliesTo, post.data.testedWith?.join(', ')].filter(Boolean).join(' · ')}</p>}
+      <p><strong>확인일</strong> <time datetime={(post.data.updatedAt ?? post.data.publishedAt).toISOString()}>{dateFormatter.format(post.data.updatedAt ?? post.data.publishedAt)}</time></p>
+    </section>}
     <div class="prose"><Content /></div>
+    {post.data.sources?.length && <section class="sources" aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Sources</h2>
+      <ul>{post.data.sources.map((source) => <li><a href={source.url}>{source.title}</a></li>)}</ul>
+    </section>}
     <p class="modeline" aria-hidden="true">-- DRAFT -- {post.id}.md</p>
   </article>
   </StudyLayout>
@@ -58,6 +68,13 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 1rem 0 0; padding: 0; }
   .tags li { color: var(--accent); font-size: 0.78rem; }
   .prose { margin-top: 2rem; }
+  .citation-box { background: var(--surface); border: 1px solid var(--border); font-size: 0.9rem; margin-top: 1.5rem; padding: 0.85rem 1rem; }
+  .citation-box::before { color: var(--accent); content: '$ post --verification'; display: block; font-size: 0.78rem; margin-bottom: 0.55rem; }
+  .citation-box p { margin: 0.35rem 0; }
+  .citation-box strong { color: var(--accent); display: inline-block; min-width: 4rem; }
+  .sources { border-top: 1px dashed var(--border); margin-top: 2.5rem; padding-top: 1.25rem; }
+  .sources h2 { font-size: 1.1rem; }
+  .sources a { color: var(--accent); }
   .prose :global(h1) { display: none; }
   .prose :global(h2) { font-size: 1.25rem; margin-top: 2.25rem; }
   .prose :global(a) { color: var(--accent); }
