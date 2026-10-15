@@ -5,6 +5,20 @@
     <description>Platform / DevOps engineer의 기술 노트</description>
     <link>https://s3onghyun.github.io/</link>
     <language>ko</language>
-    <lastBuildDate>Thu, 15 Oct 2026 02:13:18 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 00:00:00 GMT</lastBuildDate>
+      <item>
+        <title>불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법</title>
+        <description>AI 에이전트가 실제로 일하는 동안에만 macOS 잠자기를 막는 메뉴바 앱 불침번의 제작 기록. caffeinate 자식 프로세스와 CPU로 작업 여부를 판단한 방법, 덮개 모드 원복 감시병, 발열·배터리 안전장치, 실기기에서 드러난 버그를 정리했다.</description>
+        <link>https://s3onghyun.github.io/posts/building-bulchimbeon/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/building-bulchimbeon/</guid>
+        <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+        <title>nvim-edu를 만들며: 브라우저 Vim 연습장을 진짜 Neovim에 맞추기</title>
+        <description>브라우저에서 Vim·Neovim·tmux 단축키를 연습하는 nvim-edu의 제작 기록. CodeMirror Vim 에뮬레이터와 실제 Neovim 사이의 선택, nvim --headless와 동작을 비교하는 CI, 에뮬레이터 패치, vim.wasm 진짜 Vim 모드, tmux 시뮬레이터를 정리했다.</description>
+        <link>https://s3onghyun.github.io/posts/building-nvim-edu/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/building-nvim-edu/</guid>
+        <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+      </item>
   </channel>
 </rss>
