@@ -33,14 +33,14 @@ const lifePosts = posts.filter((post) => post.data.category === 'life').slice(0,
     <section class="recent-posts" aria-labelledby="tech-posts-heading">
       <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/tech</p>
       <h2 id="tech-posts-heading">tech notes</h2>
-      <ul>
-        {techPosts.map((post) => (
+      {techPosts.length > 0 ? (
+        <ul>{techPosts.map((post) => (
           <li>
             <a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a>
             <span class="draft">DRAFT</span>
           </li>
-        ))}
-      </ul>
+        ))}</ul>
+      ) : <p class="empty">No tech notes published yet.</p>}
       <a class="all-posts" href="/tech/">all tech notes →</a>
     </section>
 
