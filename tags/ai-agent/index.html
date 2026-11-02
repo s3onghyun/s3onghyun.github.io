@@ -22,5 +22,22 @@
         goatCounter.src = 'https://gc.zgo.at/count.js';
         goatCounter.dataset.goatcounter = 'https://s3onghyun.goatcounter.com/count';
         document.head.append(goatCounter);
+
+        document.querySelectorAll('[data-goatcounter-count]').forEach(async (element) => {
+          const path = element.getAttribute('data-goatcounter-count');
+          if (!path) return;
+
+          try {
+            const response = await fetch(`https://s3onghyun.goatcounter.com/counter/${encodeURIComponent(path)}.json`);
+            if (!response.ok) return;
+            const counter = await response.json();
+            const count = element.hasAttribute('data-goatcounter-unique') ? counter.count_unique : counter.count;
+            if (!/^\d+$/.test(String(count))) return;
+            element.textContent = `${element.dataset.goatcounterLabel} ${Number(count).toLocaleString()}`;
+            element.removeAttribute('hidden');
+          } catch {
+            // Counters are optional: leave their hidden placeholders empty on failure.
+          }
+        });
       }
     </script> </body> </html> 
