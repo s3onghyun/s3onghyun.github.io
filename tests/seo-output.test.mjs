@@ -40,11 +40,17 @@ const homeGraph = jsonLd(home)[0]['@graph'];
 assert.ok(homeGraph.some((entry) => entry['@type'] === 'WebSite'));
 assert.deepEqual(homeGraph.find((entry) => entry['@type'] === 'Person').sameAs, ['https://github.com/s3onghyun']);
 assert.match(home, /s3onghyun\.goatcounter\.com\/count/);
+assert.match(home, /data-goatcounter-count="\/"/);
+assert.match(home, /data-goatcounter-label="home visitors"/);
+assert.match(home, /s3onghyun\.goatcounter\.com\/counter/);
 assert.match(home, /navigator\.doNotTrack !== '1'/);
 assert.match(home, /navigator\.globalPrivacyControl/);
 
 const post = await readDist('posts/building-bulchimbeon/index.html');
 assert.match(post, /<link rel="alternate" type="text\/markdown" href="\/posts\/building-bulchimbeon\.md">/);
+assert.match(post, /data-goatcounter-count="\/posts\/building-bulchimbeon\/"/);
+assert.match(post, /data-goatcounter-label="views"/);
+assert.match(post, /data-goatcounter-count[^>]* hidden/);
 assert.match(post, />결론</);
 assert.match(post, />적용</);
 assert.match(post, />확인일</);

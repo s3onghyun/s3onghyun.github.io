@@ -22,6 +22,7 @@ const pageTitle = title === 'SEONGHYUN HONG' ? title : `${title} | SEONGHYUN HON
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(siteConfig.defaultOgImage, Astro.site);
 const jsonLd = structuredData && JSON.stringify(structuredData).replaceAll('<', '\\u003c');
+const isHomePage = Astro.url.pathname === '/';
 ---
 
 <!doctype html>
@@ -74,7 +75,7 @@ const jsonLd = structuredData && JSON.stringify(structuredData).replaceAll('<', 
         </button>
       </header>
       <main><slot /></main>
-      <footer class="site-footer">© {new Date().getFullYear()} SEONGHYUN HONG <span aria-hidden="true">·</span> press j / k to scroll</footer>
+      <footer class="site-footer">© {new Date().getFullYear()} SEONGHYUN HONG <span aria-hidden="true">·</span> press j / k to scroll{isHomePage && <><span aria-hidden="true"> · </span><span data-goatcounter-count="/" data-goatcounter-label="home visitors" data-goatcounter-unique hidden></span></>}</footer>
     </div>
     <script>
       const themeStorageKey = 's3onghyun-theme';
@@ -115,6 +116,23 @@ const jsonLd = structuredData && JSON.stringify(structuredData).replaceAll('<', 
         goatCounter.src = 'https://gc.zgo.at/count.js';
         goatCounter.dataset.goatcounter = 'https://s3onghyun.goatcounter.com/count';
         document.head.append(goatCounter);
+
+        document.querySelectorAll('[data-goatcounter-count]').forEach(async (element) => {
+          const path = element.getAttribute('data-goatcounter-count');
+          if (!path) return;
+
+          try {
+            const response = await fetch(`https://s3onghyun.goatcounter.com/counter/${encodeURIComponent(path)}.json`);
+            if (!response.ok) return;
+            const counter = await response.json();
+            const count = element.hasAttribute('data-goatcounter-unique') ? counter.count_unique : counter.count;
+            if (!/^\d+$/.test(String(count))) return;
+            element.textContent = `${element.dataset.goatcounterLabel} ${Number(count).toLocaleString()}`;
+            element.removeAttribute('hidden');
+          } catch {
+            // Counters are optional: leave their hidden placeholders empty on failure.
+          }
+        });
       }
     </script>
   </body>
