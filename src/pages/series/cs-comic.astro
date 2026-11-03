@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbJsonLd } from '../../lib/seo';
+import { isPublished, postUrl } from '../../lib/content';
+
+const title = '치즈 선배의 CS 당직일지';
+const description = '인프라 사고 하나로 시작해 그 밑의 컴퓨터 과학 개념까지 내려가는 만화 연재.';
+const episodes = (await getCollection('posts'))
+  .filter((post) => post.data.series === 'cs-comic' && isPublished(post))
+  .sort((a, b) => a.id.localeCompare(b.id));
+// Season 1 outline (curriculum); episodes without a published post show as 예정.
+const upcoming = [
+  'B-tree 인덱스',
+  'WAL과 복제',
+  '프로세스·스레드와 컨텍스트 스위치',
+  '가상 메모리, 페이지 캐시, OOM killer',
+  '네임스페이스와 cgroup = 컨테이너의 정체',
+  '스케줄링과 CPU throttling',
+  'TCP: 핸드셰이크, backlog, TIME_WAIT, 타임아웃',
+  'DNS: 해석 과정과 캐시',
+  'TLS 핸드셰이크와 인증서',
+  '합의(Raft)·etcd와 CAP',
+  '큐, backpressure, 재시도와 멱등성',
+].slice(Math.max(episodes.length - 2, 0));
+---
+
+<BaseLayout title={title} description={description} image="/comics/cs-comic/ep01-title-card.png" structuredData={breadcrumbJsonLd(title, '/series/cs-comic/')}>
+  <section class="series">
+    <p class="command"><span aria-hidden="true">$ </span>ls ~/notes/series/cs-comic</p>
+    <picture>
+      <source srcset="/comics/cs-comic/series-logo.webp" type="image/webp" />
+      <img src="/comics/cs-comic/series-logo.png" width="1000" height="420" alt="치즈 선배의 CS 당직일지 — 인프라 사고로 배우는 컴퓨터 과학. 고양이 귀가 달린 남색 간판에 ON-CALL 딱지가 붙은 시리즈 로고" />
+    </picture>
+    <h1>{title}</h1>
+    <p class="intro">
+      헤드셋을 쓴 SRE 고양이 치즈 선배와 주니어 봄이 당직을 서며 겪는 장애 하나로 한 화를 연다.
+      "업그레이드가 왜 안 끝나요?", "DELETE 했는데 왜 디스크가 그대로예요?" 같은 현장의 질문에서 출발해
+      그 밑에 있는 데이터베이스·운영체제·네트워크·분산 시스템 개념까지 내려간다.
+      매 화는 장애 현장 → 개념 → 흔한 오해 바로잡기 → 한 장 요약 순서이고, 컷마다 주장은 공식 문서로 확인해 출처를 함께 적는다.
+    </p>
+    <h2>시즌 1</h2>
+    <ol>
+      {episodes.map((post, index) => (
+        <li><span class="no">{index + 1}화</span> <a href={postUrl(post)}>{post.data.title}</a></li>
+      ))}
+      {upcoming.map((topic, index) => (
+        <li class="soon"><span class="no">{episodes.length + index + 1}화</span> {topic} <span class="badge">예정</span></li>
+      ))}
+    </ol>
+    <p class="modeline" aria-hidden="true">-- SERIES -- {episodes.length} published</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .series { padding-top: clamp(2.5rem, 8vw, 5rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  img { display: block; height: auto; margin: 1.25rem 0 0; max-width: 32rem; width: 100%; }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); margin: 1rem 0 0.75rem; }
+  .intro { color: var(--muted); }
+  h2 { color: var(--accent); font-size: 1rem; margin: 2rem 0 0.5rem; }
+  ol { list-style: none; margin: 0; padding: 0; }
+  li { border-top: 1px solid var(--border); padding: 0.8rem 0; }
+  li:last-child { border-bottom: 1px solid var(--border); }
+  .no { color: var(--muted); display: inline-block; font-size: 0.82rem; min-width: 3.2rem; }
+  a { color: var(--accent); }
+  .soon { color: var(--muted); }
+  .badge { border: 1px solid var(--border); font-size: 0.7rem; margin-left: 0.4rem; padding: 0.05rem 0.3rem; }
+  .modeline { background: var(--surface); color: var(--muted); font-size: 0.76rem; margin-top: 2rem; padding: 0.2rem 0.5rem; text-align: right; }
+</style>

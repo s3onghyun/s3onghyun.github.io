@@ -3,23 +3,25 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StudyLayout from '../../components/StudyLayout.astro';
 import { postJsonLd } from '../../lib/seo';
-import { postMarkdownUrl, postUrl, relatedPosts } from '../../lib/content';
+import { postMarkdownUrl, postUrl, relatedPosts, seriesNeighbors } from '../../lib/content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
 
   return posts.map((post) => ({
     params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post, related: relatedPosts(post, posts) },
+    props: { post, related: relatedPosts(post, posts), ...seriesNeighbors(post, posts) },
   }));
 }
 
 interface Props {
   post: CollectionEntry<'posts'>;
   related: CollectionEntry<'posts'>[];
+  prev?: CollectionEntry<'posts'>;
+  next?: CollectionEntry<'posts'>;
 }
 
-const { post, related } = Astro.props;
+const { post, related, prev, next } = Astro.props;
 const { Content } = await post.render();
 const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   year: 'numeric',
@@ -28,7 +30,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
 });
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} lang={post.data.language} structuredData={postJsonLd(post)} markdownUrl={postMarkdownUrl(post)}>
+<BaseLayout title={post.data.title} description={post.data.description} lang={post.data.language} structuredData={postJsonLd(post)} image={post.data.image} markdownUrl={postMarkdownUrl(post)}>
   <StudyLayout enabled={post.data.category === 'study'}>
   <article class="post">
     <p class="command"><span aria-hidden="true">$ </span>cat ~/notes/posts/{post.id}</p>
@@ -54,6 +56,11 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
       <h2 id="sources-heading">Sources</h2>
       <ul>{post.data.sources.map((source) => <li><a href={source.url}>{source.title}</a></li>)}</ul>
     </section>}
+    {post.data.series && <nav class="series-nav" aria-label="연재 회차 이동">
+      <a href={`/series/${post.data.series}/`}>연재 목록</a>
+      {prev && <a href={postUrl(prev)} rel="prev">← 이전 화: {prev.data.title}</a>}
+      {next && <a href={postUrl(next)} rel="next">다음 화: {next.data.title} →</a>}
+    </nav>}
     {related.length > 0 && <nav class="related" aria-labelledby="related-heading">
       <h2 id="related-heading">Related posts</h2>
       <ul>{related.map((other) => <li><a href={postUrl(other)}>{other.data.title}</a> <span>{other.data.description}</span></li>)}</ul>
@@ -129,12 +136,18 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   .related li::before { color: var(--muted); content: '> '; }
   .related a { color: var(--accent); }
   .related span { color: var(--muted); display: block; font-size: 0.85rem; padding-left: 1.2rem; }
+  .series-nav { border-top: 1px dashed var(--border); display: grid; gap: 0.5rem; margin-top: 2.5rem; padding-top: 1.25rem; }
+  .series-nav::before { color: var(--accent); content: '$ ls ~/notes/series'; font-size: 0.78rem; }
+  .series-nav a { color: var(--accent); }
   .comments { border-top: 1px dashed var(--border); margin-top: 2.5rem; padding-top: 1.25rem; }
   .comments h2 { font-size: 1.1rem; margin-top: 0; }
   .prose :global(h1) { display: none; }
+  .prose :global(.comic img) { display: block; height: auto; margin: 1.5rem auto; max-width: min(100%, 45rem); width: 100%; }
+  .prose :global(.learned) { background: var(--surface); border: 1px solid var(--border); margin: 2rem 0; padding: 0.85rem 1rem; }
+  .prose :global(.learned)::before { color: var(--accent); content: '$ cat ./이번-화에서-배운-것'; display: block; font-size: 0.78rem; }
   .prose :global(h2) { font-size: 1.25rem; margin-top: 2.25rem; }
   .prose :global(a) { color: var(--accent); }
-  .prose :global(code) { background: var(--surface); border: 1px solid color-mix(in srgb, var(--border) 65%, transparent); border-radius: 0.15rem; color: var(--accent); padding: 0.1em 0.3em; }
+  .prose :global(code) { background: var(--surface); border: 1px solid color-mix(in srgb, var(--border) 65%, transparent); border-radius: 0.15rem; color: var(--accent); overflow-wrap: anywhere; padding: 0.1em 0.3em; }
   .prose :global(pre) { background: var(--surface); border: 1px solid var(--border); border-radius: 0.2rem; line-height: 1.65; overflow-x: auto; padding: 1rem; }
   .prose :global(pre code) { background: transparent; border: 0; color: inherit; padding: 0; }
   .prose :global(blockquote) { background: color-mix(in srgb, var(--surface) 82%, var(--accent) 18%); border-left: 0.3rem solid var(--accent); color: var(--quote-text); margin: 1.5rem 0; padding: 0.8rem 1rem 0.8rem 2.35rem; position: relative; }

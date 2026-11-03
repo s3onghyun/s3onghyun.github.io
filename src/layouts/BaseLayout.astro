@@ -5,6 +5,7 @@ import { themeInitScript } from '../lib/theme-init.js';
 
 interface Props {
   description?: string;
+  image?: string;
   lang?: 'ko' | 'en';
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   markdownUrl?: string;
@@ -13,6 +14,7 @@ interface Props {
 
 const {
   description = 'Platform / DevOps engineer의 기술 노트',
+  image,
   lang = 'ko',
   structuredData,
   markdownUrl,
@@ -20,7 +22,7 @@ const {
 } = Astro.props;
 const pageTitle = title === 'SEONGHYUN HONG' ? title : `${title} | SEONGHYUN HONG`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const ogImageUrl = new URL(siteConfig.defaultOgImage, Astro.site);
+const ogImageUrl = new URL(image ?? siteConfig.defaultOgImage, Astro.site);
 const jsonLd = structuredData && JSON.stringify(structuredData).replaceAll('<', '\\u003c');
 const isHomePage = Astro.url.pathname === '/';
 ---
@@ -41,7 +43,7 @@ const isHomePage = Astro.url.pathname === '/';
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />

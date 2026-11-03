@@ -24,3 +24,13 @@ export const relatedPosts = (post: CollectionEntry<'posts'>, posts: CollectionEn
     .sort((a, b) => b.score - a.score || b.other.data.publishedAt.getTime() - a.other.data.publishedAt.getTime())
     .slice(0, limit)
     .map(({ other }) => other);
+
+// Episodes of one series ordered by publish date, then file name (cs-comic-01-…, cs-comic-02-…).
+export const seriesNeighbors = (post: CollectionEntry<'posts'>, posts: CollectionEntry<'posts'>[]) => {
+  if (!post.data.series) return {};
+  const episodes = posts
+    .filter((other) => other.data.series === post.data.series && (other.id === post.id || isPublished(other)))
+    .sort((a, b) => a.data.publishedAt.getTime() - b.data.publishedAt.getTime() || a.id.localeCompare(b.id));
+  const index = episodes.findIndex((other) => other.id === post.id);
+  return { prev: episodes[index - 1], next: episodes[index + 1] };
+};

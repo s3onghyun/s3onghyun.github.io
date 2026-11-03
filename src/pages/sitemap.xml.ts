@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
 import { isPublished, postModifiedAt, postUrl } from '../lib/content';
 
-const staticPaths = ['/', '/about/', '/projects/', '/posts/', '/tech/', '/study/', '/life/', '/tags/'];
+const staticPaths = ['/', '/about/', '/projects/', '/posts/', '/tech/', '/study/', '/life/', '/tags/', '/series/cs-comic/'];
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL('https://s3onghyun.github.io');
