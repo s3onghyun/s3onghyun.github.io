@@ -5,7 +5,21 @@
     <description>Platform / DevOps engineer의 기술 노트</description>
     <link>https://s3onghyun.github.io/</link>
     <language>ko</language>
-    <lastBuildDate>Wed, 14 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>
+      <item>
+        <title>[CS 당직일지 2화] DELETE 했는데 왜 디스크가 그대로예요?</title>
+        <description>로그 행 절반을 지웠는데 디스크는 82% 그대로. PostgreSQL의 MVCC, dead tuple, VACUUM과 XID wraparound를 치즈 선배와 봄의 8컷 만화로 정리했다.</description>
+        <link>https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/</guid>
+        <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+        <title>[CS 당직일지 1화] GitLab 업그레이드, 왜 1시간 넘게 기다려요?</title>
+        <description>설치는 10분에 끝났는데 업그레이드는 안 끝났다. GitLab 배치 백그라운드 마이그레이션(BBM)을 치즈 선배와 봄의 6컷 만화로 정리했다.</description>
+        <link>https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/</guid>
+        <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      </item>
       <item>
         <title>불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법</title>
         <description>AI 에이전트가 실제로 일하는 동안에만 macOS 잠자기를 막는 메뉴바 앱 불침번의 제작 기록. caffeinate 자식 프로세스와 CPU로 작업 여부를 판단한 방법, 덮개 모드 원복 감시병, 발열·배터리 안전장치, 실기기에서 드러난 버그를 정리했다.</description>

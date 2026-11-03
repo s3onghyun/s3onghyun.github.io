@@ -25,6 +25,17 @@
     <loc>https://s3onghyun.github.io/tags/</loc>
   </url>
   <url>
+    <loc>https://s3onghyun.github.io/series/cs-comic/</loc>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
     <loc>https://s3onghyun.github.io/posts/building-bulchimbeon/</loc>
     <lastmod>2026-10-14</lastmod>
   </url>
@@ -39,10 +50,22 @@
     <loc>https://s3onghyun.github.io/tags/codemirror/</loc>
   </url>
   <url>
+    <loc>https://s3onghyun.github.io/tags/cs-comic/</loc>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/tags/database/</loc>
+  </url>
+  <url>
     <loc>https://s3onghyun.github.io/tags/developer-tools/</loc>
   </url>
   <url>
+    <loc>https://s3onghyun.github.io/tags/gitlab/</loc>
+  </url>
+  <url>
     <loc>https://s3onghyun.github.io/tags/macos/</loc>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/tags/mvcc/</loc>
   </url>
   <url>
     <loc>https://s3onghyun.github.io/tags/neovim/</loc>
@@ -51,10 +74,16 @@
     <loc>https://s3onghyun.github.io/tags/open-source/</loc>
   </url>
   <url>
+    <loc>https://s3onghyun.github.io/tags/postgresql/</loc>
+  </url>
+  <url>
     <loc>https://s3onghyun.github.io/tags/swift/</loc>
   </url>
   <url>
     <loc>https://s3onghyun.github.io/tags/tmux/</loc>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/tags/upgrade/</loc>
   </url>
   <url>
     <loc>https://s3onghyun.github.io/tags/vim/</loc>

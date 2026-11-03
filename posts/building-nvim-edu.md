@@ -154,3 +154,5 @@ CI는 chromium, firefox, webkit 세 브라우저에서 모든 레벨 답안과 �
 ## Related posts
 
 - [불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법](https://s3onghyun.github.io/posts/building-bulchimbeon/)
+- [[CS 당직일지 2화] DELETE 했는데 왜 디스크가 그대로예요?](https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/)
+- [[CS 당직일지 1화] GitLab 업그레이드, 왜 1시간 넘게 기다려요?](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/)

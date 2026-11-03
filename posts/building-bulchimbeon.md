@@ -176,3 +176,5 @@ hook으로 더 정확하게 맞물리길 원하고 macOS 26.4 이상을 쓴다�
 ## Related posts
 
 - [nvim-edu를 만들며: 브라우저 Vim 연습장을 진짜 Neovim에 맞추기](https://s3onghyun.github.io/posts/building-nvim-edu/)
+- [[CS 당직일지 2화] DELETE 했는데 왜 디스크가 그대로예요?](https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/)
+- [[CS 당직일지 1화] GitLab 업그레이드, 왜 1시간 넘게 기다려요?](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/)
