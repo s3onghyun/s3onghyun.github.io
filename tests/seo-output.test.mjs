@@ -103,18 +103,23 @@ for (const [slug, other] of [['building-bulchimbeon', 'building-nvim-edu'], ['bu
   assert.match(markdown, new RegExp(`## Related posts\\n\\n- \\[[^\\]]+\\]\\(https://s3onghyun\\.github\\.io/posts/${other}/\\)`));
   assert.doesNotMatch(markdown.split('## Related posts')[1], /preserving-jaeger-sampled-flag/);
 }
-// cs-comic series: prev/next links follow episode order, series page lists upcoming episodes.
+// cs-comic series: prev/next links follow the published story order, including interludes.
 const ep1 = await readDist('posts/cs-comic-01-batched-background-migrations/index.html');
 const ep2 = await readDist('posts/cs-comic-02-mvcc-vacuum/index.html');
-assert.match(ep1, /href="\/posts\/cs-comic-02-mvcc-vacuum\/" rel="next"/);
+const interlude1 = await readDist('posts/cs-comic-interlude-01-first-week/index.html');
+const ep3 = await readDist('posts/cs-comic-03-btree-index/index.html');
+assert.match(ep1, /href="\/posts\/cs-comic-interlude-01-first-week\/" rel="next"/);
 assert.doesNotMatch(ep1, /rel="prev"/);
-assert.match(ep2, /href="\/posts\/cs-comic-01-batched-background-migrations\/" rel="prev"/);
-assert.doesNotMatch(ep2, /rel="next"/);
+assert.match(interlude1, /href="\/posts\/cs-comic-01-batched-background-migrations\/" rel="prev"/);
+assert.match(interlude1, /href="\/posts\/cs-comic-02-mvcc-vacuum\/" rel="next"/);
+assert.match(ep2, /href="\/posts\/cs-comic-interlude-01-first-week\/" rel="prev"/);
 assert.match(ep2, /type="image\/avif"[\s\S]*type="image\/webp"[\s\S]*loading="lazy"/);
 assert.match(ep2, /property="og:image" content="https:\/\/s3onghyun\.github\.io\/comics\/cs-comic\/ep02-title-card\.png"/);
 assert.match(ep2, /giscus\.app\/client\.js/);
 const series = await readDist('series/cs-comic/index.html');
 assert.match(series, /cs-comic-01-batched-background-migrations/);
-assert.match(series, /3화<\/span> B-tree 인덱스 <span class="badge"[^>]*>예정/);
+assert.match(series, /막간 1<\/span>/);
+assert.match(series, /3화<\/span> <a href="\/posts\/cs-comic-03-btree-index/);
+assert.doesNotMatch(ep3, /rel="next"/);
 assert.match(await readDist('sitemap.xml'), /https:\/\/s3onghyun\.github\.io\/series\/cs-comic\//);
 console.log('SEO output checks passed');

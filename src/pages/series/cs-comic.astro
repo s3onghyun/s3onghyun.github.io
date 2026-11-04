@@ -8,10 +8,10 @@ const title = '치즈 선배의 CS 당직일지';
 const description = '인프라 사고 하나로 시작해 그 밑의 컴퓨터 과학 개념까지 내려가는 만화 연재.';
 const episodes = (await getCollection('posts'))
   .filter((post) => post.data.series === 'cs-comic' && isPublished(post))
-  .sort((a, b) => a.id.localeCompare(b.id));
+  .sort((a, b) => (a.data.seriesOrder ?? Number.MAX_SAFE_INTEGER) - (b.data.seriesOrder ?? Number.MAX_SAFE_INTEGER)
+    || a.id.localeCompare(b.id));
 // Season 1 outline (curriculum); episodes without a published post show as 예정.
 const upcoming = [
-  'B-tree 인덱스',
   'WAL과 복제',
   '프로세스·스레드와 컨텍스트 스위치',
   '가상 메모리, 페이지 캐시, OOM killer',
@@ -22,7 +22,7 @@ const upcoming = [
   'TLS 핸드셰이크와 인증서',
   '합의(Raft)·etcd와 CAP',
   '큐, backpressure, 재시도와 멱등성',
-].slice(Math.max(episodes.length - 2, 0));
+];
 ---
 
 <BaseLayout title={title} description={description} image="/comics/cs-comic/ep01-title-card.png" structuredData={breadcrumbJsonLd(title, '/series/cs-comic/')}>
@@ -42,7 +42,7 @@ const upcoming = [
     <h2>시즌 1</h2>
     <ol>
       {episodes.map((post, index) => (
-        <li><span class="no">{index + 1}화</span> <a href={postUrl(post)}>{post.data.title}</a></li>
+        <li><span class="no">{post.data.seriesLabel ?? `${index + 1}화`}</span> <a href={postUrl(post)}>{post.data.title}</a></li>
       ))}
       {upcoming.map((topic, index) => (
         <li class="soon"><span class="no">{episodes.length + index + 1}화</span> {topic} <span class="badge">예정</span></li>

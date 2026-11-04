@@ -16,6 +16,8 @@ const postSchema = z.object({
   summary: z.string().optional(),
   appliesTo: z.string().optional(),
   series: z.string().optional(),
+  seriesOrder: z.number().int().positive().optional(),
+  seriesLabel: z.string().optional(),
   image: z.string().optional(),
   draft: z.boolean().default(true),
 });

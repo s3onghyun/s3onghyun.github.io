@@ -1,7 +1,7 @@
 ---
 title: "[CS 당직일지 2화] DELETE 했는데 왜 디스크가 그대로예요?"
 description: 로그 행 절반을 지웠는데 디스크는 82% 그대로. PostgreSQL의 MVCC, dead tuple, VACUUM과 XID wraparound를 치즈 선배와 봄의 8컷 만화로 정리했다.
-publishedAt: 2026-11-03
+publishedAt: 2026-11-01
 tags:
   - cs-comic
   - postgresql
@@ -9,6 +9,8 @@ tags:
   - mvcc
 category: tech
 series: cs-comic
+seriesOrder: 3
+seriesLabel: 2화
 image: /comics/cs-comic/ep02-title-card.png
 summary: PostgreSQL의 DELETE와 UPDATE는 행을 바로 지우지 않고 옛 버전에 xmax 표시만 남긴다. VACUUM은 그 자리를 재사용 가능하게 할 뿐 보통 OS에 돌려주지 않는다.
 appliesTo: PostgreSQL 18 (autovacuum 기본값은 버전에 따라 다름)
