@@ -2,8 +2,8 @@
 
 URL: https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/
 Markdown: https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum.md
-Published: 2026-11-03
-Updated: 2026-11-03
+Published: 2026-11-01
+Updated: 2026-11-01
 
 [치즈 선배의 CS 당직일지](/series/cs-comic/) 2화. [1화](/posts/cs-comic-01-batched-background-migrations/)에서 BBM이 왜 autovacuum을 지켜봤는지, 이번 화에서 답한다.
 주제는 PostgreSQL의 **MVCC와 VACUUM**이다.
@@ -86,6 +86,6 @@ autovacuum은 dead tuple 수가 `min(50 + 0.2 × 행 수, 1억)`을 넘으면 �
 
 ## Related posts
 
-- [[CS 당직일지 1화] GitLab 업그레이드, 왜 1시간 넘게 기다려요?](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/)
-- [불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법](https://s3onghyun.github.io/posts/building-bulchimbeon/)
-- [nvim-edu를 만들며: 브라우저 Vim 연습장을 진짜 Neovim에 맞추기](https://s3onghyun.github.io/posts/building-nvim-edu/)
+- [[CS 당직일지 3화] 인덱스 걸었는데 왜 안 타요?](https://s3onghyun.github.io/posts/cs-comic-03-btree-index/)
+- [[CS 당직일지 막간 2] BEGIN 해 놓고 퇴근한 범인](https://s3onghyun.github.io/posts/cs-comic-interlude-02-culprit/)
+- [[CS 당직일지 1화] 업그레이드, 왜 1시간 넘게 기다려요?](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/)

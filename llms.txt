@@ -16,7 +16,11 @@ Seonghyun Hong writes Korean and English notes about infrastructure, DevOps, obs
 
 ## Published posts
 
+- [[CS 당직일지 3화] 인덱스 걸었는데 왜 안 타요?](https://s3onghyun.github.io/posts/cs-comic-03-btree-index/) ([Markdown](https://s3onghyun.github.io/posts/cs-comic-03-btree-index.md)): B-tree 인덱스, 선택도, 플래너, HOT와 인덱스 bloat를 9컷 만화로 정리했다.
+- [[CS 당직일지 막간 3] 당직실의 3분](https://s3onghyun.github.io/posts/cs-comic-interlude-03-coffee/) ([Markdown](https://s3onghyun.github.io/posts/cs-comic-interlude-03-coffee.md)): 알람이 울리면 치즈 선배가 커피부터 내리는 이유를 담은 4컷 이야기.
+- [[CS 당직일지 막간 2] BEGIN 해 놓고 퇴근한 범인](https://s3onghyun.github.io/posts/cs-comic-interlude-02-culprit/) ([Markdown](https://s3onghyun.github.io/posts/cs-comic-interlude-02-culprit.md)): 2화의 오래 열린 트랜잭션 범인을 찾아가는 4컷 이야기.
 - [[CS 당직일지 2화] DELETE 했는데 왜 디스크가 그대로예요?](https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/) ([Markdown](https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum.md)): 로그 행 절반을 지웠는데 디스크는 82% 그대로. PostgreSQL의 MVCC, dead tuple, VACUUM과 XID wraparound를 치즈 선배와 봄의 8컷 만화로 정리했다.
-- [[CS 당직일지 1화] GitLab 업그레이드, 왜 1시간 넘게 기다려요?](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/) ([Markdown](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations.md)): 설치는 10분에 끝났는데 업그레이드는 안 끝났다. GitLab 배치 백그라운드 마이그레이션(BBM)을 치즈 선배와 봄의 6컷 만화로 정리했다.
+- [[CS 당직일지 막간 1] 막내는 누구?](https://s3onghyun.github.io/posts/cs-comic-interlude-01-first-week/) ([Markdown](https://s3onghyun.github.io/posts/cs-comic-interlude-01-first-week.md)): 봄의 입사 첫 주. 모니와 먼지 선배, 그리고 미어 PM을 만나는 4컷 이야기.
+- [[CS 당직일지 1화] 업그레이드, 왜 1시간 넘게 기다려요?](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/) ([Markdown](https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations.md)): 설치는 10분에 끝났는데 업그레이드는 안 끝났다. 배치 백그라운드 마이그레이션을 6컷 만화로 정리했다.
 - [불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법](https://s3onghyun.github.io/posts/building-bulchimbeon/) ([Markdown](https://s3onghyun.github.io/posts/building-bulchimbeon.md)): AI 에이전트가 실제로 일하는 동안에만 macOS 잠자기를 막는 메뉴바 앱 불침번의 제작 기록. caffeinate 자식 프로세스와 CPU로 작업 여부를 판단한 방법, 덮개 모드 원복 감시병, 발열·배터리 안전장치, 실기기에서 드러난 버그를 정리했다.
 - [nvim-edu를 만들며: 브라우저 Vim 연습장을 진짜 Neovim에 맞추기](https://s3onghyun.github.io/posts/building-nvim-edu/) ([Markdown](https://s3onghyun.github.io/posts/building-nvim-edu.md)): 브라우저에서 Vim·Neovim·tmux 단축키를 연습하는 nvim-edu의 제작 기록. CodeMirror Vim 에뮬레이터와 실제 Neovim 사이의 선택, nvim --headless와 동작을 비교하는 CI, 에뮬레이터 패치, vim.wasm 진짜 Vim 모드, tmux 시뮬레이터를 정리했다.

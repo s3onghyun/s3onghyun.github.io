@@ -28,12 +28,28 @@
     <loc>https://s3onghyun.github.io/series/cs-comic/</loc>
   </url>
   <url>
-    <loc>https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/</loc>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-interlude-02-culprit/</loc>
+    <lastmod>2026-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-interlude-01-first-week/</loc>
+    <lastmod>2026-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-03-btree-index/</loc>
+    <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-interlude-03-coffee/</loc>
     <lastmod>2026-11-03</lastmod>
   </url>
   <url>
-    <loc>https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <loc>https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
   <url>
     <loc>https://s3onghyun.github.io/posts/building-bulchimbeon/</loc>
@@ -59,7 +75,7 @@
     <loc>https://s3onghyun.github.io/tags/developer-tools/</loc>
   </url>
   <url>
-    <loc>https://s3onghyun.github.io/tags/gitlab/</loc>
+    <loc>https://s3onghyun.github.io/tags/index/</loc>
   </url>
   <url>
     <loc>https://s3onghyun.github.io/tags/macos/</loc>
@@ -71,10 +87,16 @@
     <loc>https://s3onghyun.github.io/tags/neovim/</loc>
   </url>
   <url>
+    <loc>https://s3onghyun.github.io/tags/oncall/</loc>
+  </url>
+  <url>
     <loc>https://s3onghyun.github.io/tags/open-source/</loc>
   </url>
   <url>
     <loc>https://s3onghyun.github.io/tags/postgresql/</loc>
+  </url>
+  <url>
+    <loc>https://s3onghyun.github.io/tags/story/</loc>
   </url>
   <url>
     <loc>https://s3onghyun.github.io/tags/swift/</loc>

@@ -5,20 +5,48 @@
     <description>Platform / DevOps engineer의 기술 노트</description>
     <link>https://s3onghyun.github.io/</link>
     <language>ko</language>
-    <lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 GMT</lastBuildDate>
+      <item>
+        <title>[CS 당직일지 3화] 인덱스 걸었는데 왜 안 타요?</title>
+        <description>B-tree 인덱스, 선택도, 플래너, HOT와 인덱스 bloat를 9컷 만화로 정리했다.</description>
+        <link>https://s3onghyun.github.io/posts/cs-comic-03-btree-index/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-03-btree-index/</guid>
+        <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+        <title>[CS 당직일지 막간 3] 당직실의 3분</title>
+        <description>알람이 울리면 치즈 선배가 커피부터 내리는 이유를 담은 4컷 이야기.</description>
+        <link>https://s3onghyun.github.io/posts/cs-comic-interlude-03-coffee/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-interlude-03-coffee/</guid>
+        <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+        <title>[CS 당직일지 막간 2] BEGIN 해 놓고 퇴근한 범인</title>
+        <description>2화의 오래 열린 트랜잭션 범인을 찾아가는 4컷 이야기.</description>
+        <link>https://s3onghyun.github.io/posts/cs-comic-interlude-02-culprit/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-interlude-02-culprit/</guid>
+        <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
+      </item>
       <item>
         <title>[CS 당직일지 2화] DELETE 했는데 왜 디스크가 그대로예요?</title>
         <description>로그 행 절반을 지웠는데 디스크는 82% 그대로. PostgreSQL의 MVCC, dead tuple, VACUUM과 XID wraparound를 치즈 선배와 봄의 8컷 만화로 정리했다.</description>
         <link>https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/</link>
         <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-02-mvcc-vacuum/</guid>
-        <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+        <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
       </item>
       <item>
-        <title>[CS 당직일지 1화] GitLab 업그레이드, 왜 1시간 넘게 기다려요?</title>
-        <description>설치는 10분에 끝났는데 업그레이드는 안 끝났다. GitLab 배치 백그라운드 마이그레이션(BBM)을 치즈 선배와 봄의 6컷 만화로 정리했다.</description>
+        <title>[CS 당직일지 막간 1] 막내는 누구?</title>
+        <description>봄의 입사 첫 주. 모니와 먼지 선배, 그리고 미어 PM을 만나는 4컷 이야기.</description>
+        <link>https://s3onghyun.github.io/posts/cs-comic-interlude-01-first-week/</link>
+        <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-interlude-01-first-week/</guid>
+        <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+        <title>[CS 당직일지 1화] 업그레이드, 왜 1시간 넘게 기다려요?</title>
+        <description>설치는 10분에 끝났는데 업그레이드는 안 끝났다. 배치 백그라운드 마이그레이션을 6컷 만화로 정리했다.</description>
         <link>https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/</link>
         <guid isPermaLink="true">https://s3onghyun.github.io/posts/cs-comic-01-batched-background-migrations/</guid>
-        <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+        <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
       </item>
       <item>
         <title>불침번을 만들며: AI 에이전트가 일하는 동안만 Mac을 깨워 두는 법</title>
