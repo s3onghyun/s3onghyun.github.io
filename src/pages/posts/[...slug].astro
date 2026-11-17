@@ -143,6 +143,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   .comments h2 { font-size: 1.1rem; margin-top: 0; }
   .prose :global(h1) { display: none; }
   .prose :global(.comic img) { display: block; height: auto; margin: 1.5rem auto; max-width: min(100%, 45rem); width: 100%; }
+  .prose :global(img) { height: auto; max-width: 100%; }
   .prose :global(.learned) { background: var(--surface); border: 1px solid var(--border); margin: 2rem 0; padding: 0.85rem 1rem; }
   .prose :global(.learned)::before { color: var(--accent); content: '$ cat ./이번-화에서-배운-것'; display: block; font-size: 0.78rem; }
   .prose :global(h2) { font-size: 1.25rem; margin-top: 2.25rem; }
@@ -166,5 +167,16 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
 
   @media (max-width: 30rem) {
     .prose :global(th), .prose :global(td) { padding: 0.45rem 0.65rem; }
+  }
+
+  @media (max-width: 40rem) {
+    .post { padding-top: 2rem; }
+    .command { font-size: 0.78rem; overflow-wrap: anywhere; }
+    h1 { font-size: clamp(1.55rem, 7vw, 2rem); line-height: 1.4; }
+    .tags { gap: 0.2rem 0.3rem; }
+    .tags a { align-items: center; display: inline-flex; min-height: 2.75rem; padding: 0.35rem 0.2rem; }
+    .prose { margin-top: 1.5rem; }
+    .prose :global(pre) { font-size: 0.82rem; margin-left: 0; margin-right: 0; padding: 0.75rem; }
+    .prose :global(table) { font-size: 0.86rem; }
   }
 </style>

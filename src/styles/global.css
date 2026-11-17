@@ -65,6 +65,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+img, picture, video, svg { max-width: 100%; }
+img, video { height: auto; }
+
 a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.18em; }
 a:hover { color: var(--accent); }
 
@@ -133,7 +136,17 @@ pre, code { font-family: var(--mono); font-variant-ligatures: none; }
 }
 
 @media (max-width: 30rem) {
-  .site-shell { width: 100%; padding-left: 2.8rem; padding-right: 1rem; background-position-x: 1.95rem; }
-  .site-shell::before { left: 0.6rem; }
+  .site-shell { width: 100%; padding-left: 1rem; padding-right: 1rem; background: none; }
+  .site-shell::before { content: none; }
   .site-header { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
+}
+
+@media (max-width: 40rem) {
+  .site-shell { width: 100%; padding: 1rem 1rem 2.5rem; background: none; }
+  .site-shell::before { content: none; }
+  .site-header { align-items: flex-start; flex-direction: column; gap: 0.35rem; }
+  nav { gap: 0.15rem 0.25rem; }
+  nav a, .theme-toggle { align-items: center; display: inline-flex; min-height: 2.75rem; padding: 0.45rem 0.5rem; }
+  .site-name { min-height: 2.75rem; display: inline-flex; align-items: center; }
+  .site-footer { margin-top: 3rem; }
 }

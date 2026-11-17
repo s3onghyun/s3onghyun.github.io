@@ -43,8 +43,9 @@ assert.match(home, /s3onghyun\.goatcounter\.com\/count/);
 assert.match(home, /data-goatcounter-count="\/"/);
 assert.match(home, /data-goatcounter-label="home visitors"/);
 assert.match(home, /s3onghyun\.goatcounter\.com\/counter/);
-assert.match(home, /navigator\.doNotTrack !== '1'/);
-assert.match(home, /navigator\.globalPrivacyControl/);
+assert.match(home, /src="\/count\.js"/);
+assert.doesNotMatch(home, /gc\.zgo\.at/);
+assert.doesNotMatch(home, /navigator\.globalPrivacyControl/);
 assert.doesNotMatch(home, /giscus\.app\/client\.js/);
 
 const post = await readDist('posts/building-bulchimbeon/index.html');
