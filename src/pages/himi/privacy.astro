@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const email = 's3onghyun.hong@gmail.com';
+---
+
+<BaseLayout title="HIMI 개인정보처리방침 / Privacy Policy" description="HIMI(히미) 앱 개인정보처리방침 / HIMI app privacy policy">
+  <article class="policy">
+    <p class="command"><span aria-hidden="true">$ </span>cat himi/privacy.md</p>
+    <h1>HIMI(히미) 개인정보처리방침</h1>
+    <p>시행일: 2026년 11월 24일</p>
+    <p>HIMI(이하 "앱")는 홍성현(이하 "개발자")이 만든 맨몸 운동 앱입니다. 이 방침은 앱이 어떤 정보를 다루는지 설명합니다.</p>
+
+    <h2>1. 개발자가 수집하는 정보: 없음</h2>
+    <ul>
+      <li>앱에는 회원가입·로그인이 없습니다.</li>
+      <li>앱은 인터넷으로 어떤 정보도 보내지 않습니다. 개발자 서버가 없고, 분석 도구·광고·추적 도구도 넣지 않았습니다.</li>
+      <li>따라서 개발자는 이용자의 개인정보를 수집·보관·제3자에게 제공하지 않습니다.</li>
+    </ul>
+
+    <h2>2. 기기 안에만 저장되는 정보</h2>
+    <p>앱이 동작하려면 다음 정보를 <strong>이용자의 iPhone 안에만</strong> 저장합니다.</p>
+    <ul>
+      <li>체중(선택 입력), 체력 측정 결과, 운동 기록(세트·횟수·시간), 직접 만든 루틴</li>
+      <li>통증 기록과 "가슴 통증·어지러움·심한 숨참" 답변(안전 멈춤 기능에 사용)</li>
+      <li>철봉 유무, 피하고 싶은 동작, 알림 켜기 여부 같은 설정</li>
+    </ul>
+    <p>음성 안내는 앱에 들어 있는 소리를 재생할 뿐이며, 앱은 마이크를 쓰거나 소리를 녹음하지 않습니다.</p>
+    <p>이 정보는 개발자에게 전송되지 않습니다. iPhone 백업(iCloud 백업 또는 컴퓨터 백업)을 켜 두었다면, 다른 앱 데이터와 마찬가지로 Apple의 백업에 포함될 수 있으며 이는 Apple의 개인정보 처리방침을 따릅니다.</p>
+
+    <h2>3. 알림</h2>
+    <p>월·수·금 운동 알림과 휴식 끝 알림은 기기 안에서 예약되는 로컬 알림입니다. 서버를 거치지 않으며, iPhone 설정에서 언제든 끌 수 있습니다.</p>
+
+    <h2>4. 내보내기</h2>
+    <p>설정의 "내보내기"를 누르면 기록을 JSON·CSV 파일로 만들어 iOS 공유 시트로 넘깁니다. 어디로 보낼지는 이용자가 고르며, 그 뒤의 처리는 이용자가 고른 앱이나 서비스의 방침을 따릅니다.</p>
+
+    <h2>5. 보관 기간과 삭제</h2>
+    <ul>
+      <li>정보는 이용자가 앱을 지울 때까지 기기에 남습니다.</li>
+      <li>앱을 삭제하면 기기에 저장된 모든 기록이 함께 지워집니다.</li>
+      <li>개발자는 정보를 갖고 있지 않으므로 별도의 삭제 요청 절차가 필요 없습니다.</li>
+    </ul>
+
+    <h2>6. 아동</h2>
+    <p>앱은 아동을 대상으로 하지 않으며, 누구의 정보도 수집하지 않습니다.</p>
+
+    <h2>7. 건강 관련 안내</h2>
+    <p>앱은 의료 기기가 아니며 질병을 진단하거나 치료하지 않습니다. 앱의 건강 관련 답변은 안전 멈춤 기능에만 쓰이고 기기 밖으로 나가지 않습니다.</p>
+
+    <h2>8. 방침 변경</h2>
+    <p>방침이 바뀌면 이 페이지에 시행일과 함께 알립니다. 앱이 정보를 수집하도록 바뀌는 경우에는 앱 업데이트 전에 이 방침과 App Store의 개인정보 항목을 먼저 고칩니다.</p>
+
+    <h2>9. 문의</h2>
+    <p><a href={`mailto:${email}`}>{email}</a></p>
+
+    <section lang="en">
+      <h1>HIMI Privacy Policy</h1>
+      <p>Effective date: November 24, 2026</p>
+      <p>HIMI ("the app") is a bodyweight training app made by Seonghyun Hong ("the developer"). This policy explains what information the app handles.</p>
+
+      <h2>1. Information the developer collects: none</h2>
+      <ul>
+        <li>The app has no sign-up or login.</li>
+        <li>The app sends no information over the internet. There is no developer server, and the app contains no analytics, advertising or tracking tools.</li>
+        <li>The developer therefore does not collect, store or share any personal information.</li>
+      </ul>
+
+      <h2>2. Information stored only on your device</h2>
+      <p>To work, the app stores the following <strong>only on your iPhone</strong>:</p>
+      <ul>
+        <li>bodyweight (optional), fitness test results, workout logs (sets, reps, times) and routines you create;</li>
+        <li>pain reports and your answer to "chest pain, dizziness or unusual breathlessness" (used by the safety stop);</li>
+        <li>settings such as whether you have a pull-up bar, moves to avoid, and reminders on or off.</li>
+      </ul>
+      <p>Voice cues only play sounds bundled with the app; the app does not use the microphone or record any audio.</p>
+      <p>None of this is sent to the developer. If iPhone backup (iCloud Backup or a computer backup) is on, it may be included in Apple's backup like any other app data, under Apple's privacy policy.</p>
+
+      <h2>3. Notifications</h2>
+      <p>Mon / Wed / Fri reminders and rest-over alerts are local notifications scheduled on the device. They do not go through any server, and you can turn them off in iPhone Settings at any time.</p>
+
+      <h2>4. Export</h2>
+      <p>"Export" in Settings creates JSON or CSV files and hands them to the iOS share sheet. You choose where they go; after that, the policy of the app or service you chose applies.</p>
+
+      <h2>5. Retention and deletion</h2>
+      <ul>
+        <li>Data stays on your device until you delete the app.</li>
+        <li>Deleting the app deletes all data it stored on the device.</li>
+        <li>The developer holds no data, so no separate deletion request is needed.</li>
+      </ul>
+
+      <h2>6. Children</h2>
+      <p>The app is not directed at children and collects no one's information.</p>
+
+      <h2>7. Health notice</h2>
+      <p>The app is not a medical device and does not diagnose or treat anything. Its health-related answers are used only for the safety stop and never leave the device.</p>
+
+      <h2>8. Changes</h2>
+      <p>Changes will be posted on this page with a new effective date. If the app ever starts collecting information, this policy and the App Store privacy details will be updated before that app update ships.</p>
+
+      <h2>9. Contact</h2>
+      <p><a href={`mailto:${email}`}>{email}</a></p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .policy { max-width: 44rem; padding-top: clamp(3rem, 8vw, 5.5rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  h1 { margin: 0 0 1.5rem; font-size: clamp(1.6rem, 5vw, 2.4rem); letter-spacing: -0.04em; }
+  h2 { margin-top: 2rem; font-size: 1.1rem; }
+  section { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  p, li { color: var(--muted); }
+</style>

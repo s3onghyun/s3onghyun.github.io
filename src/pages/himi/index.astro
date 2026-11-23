@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const email = 's3onghyun.hong@gmail.com';
+---
+
+<BaseLayout title="HIMI 지원 / Support" description="HIMI(히미) 맨몸 운동 앱 지원 페이지 / HIMI app support">
+  <article class="himi">
+    <p class="command"><span aria-hidden="true">$ </span>cat himi/support.md</p>
+    <h1>HIMI 히미</h1>
+    <p>
+      HIMI는 체력을 재서 8주 맨몸 운동 프로그램을 짜 주고, 운동할 때 같이 세어 주는 iPhone 앱입니다.
+      계정·광고·추적이 없고, 모든 기록은 iPhone 안에만 저장됩니다.
+    </p>
+    <p>문의: <a href={`mailto:${email}`}>{email}</a></p>
+
+    <h2>자주 묻는 질문</h2>
+    <dl>
+      <dt>제 운동 기록은 어디에 저장되나요?</dt>
+      <dd>이 iPhone 안에만 저장되고 개발자에게 전송되지 않습니다. 설정의 "내보내기"로 언제든 JSON·CSV로 꺼낼 수 있고, 앱을 삭제하면 기록도 함께 지워집니다.</dd>
+      <dt>운동 중에 아프면 어떻게 하나요?</dt>
+      <dd>통증 버튼을 누르면 그 운동은 바로 멈추고 다음 계획이 그에 맞춰 조정됩니다. 가슴 통증·어지러움·심한 숨참을 알리면 프로그램을 멈추고 전문가 확인을 먼저 권합니다.</dd>
+      <dt>듣던 음악이 멈추나요?</dt>
+      <dd>멈추지 않습니다. 짧은 음성 안내가 나올 때만 잠깐 소리를 줄이고 바로 돌려놓습니다.</dd>
+      <dt>의료 조언인가요?</dt>
+      <dd>아닙니다. HIMI는 의료 기기가 아니며 질병을 진단하거나 치료하지 않습니다. 운동을 시작하기 전에 의사와 상의하고, 아픈 운동은 멈추세요.</dd>
+    </dl>
+    <p><a href="/himi/privacy/">개인정보처리방침</a></p>
+
+    <section lang="en">
+      <h2>Support (English)</h2>
+      <p>
+        HIMI tests your level, builds an 8-week bodyweight program and counts reps with you.
+        No account, no ads, no tracking: everything is stored on your iPhone.
+      </p>
+      <p>Contact: <a href={`mailto:${email}`}>{email}</a></p>
+      <dl>
+        <dt>Where is my workout data stored?</dt>
+        <dd>Only on your iPhone; it is never sent to the developer. Export it as JSON or CSV from Settings at any time. Deleting the app deletes the data.</dd>
+        <dt>What if something hurts?</dt>
+        <dd>Tap Pain and that exercise stops right away, and the plan adjusts. Report chest pain, dizziness or unusual breathlessness and the program pauses until a professional clears you.</dd>
+        <dt>Will my music stop?</dt>
+        <dd>No. HIMI lowers your music only while a short cue plays, then brings it right back.</dd>
+        <dt>Is this medical advice?</dt>
+        <dd>No. HIMI is not a medical device and does not diagnose or treat anything. Check with a doctor before you start, and stop any exercise that hurts.</dd>
+      </dl>
+      <p><a href="/himi/privacy/">Privacy Policy</a></p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .himi { max-width: 44rem; padding-top: clamp(3rem, 8vw, 5.5rem); }
+  .command { color: var(--accent); font-size: 0.9rem; }
+  h1 { margin: 0 0 1.5rem; font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -0.05em; }
+  h2 { margin-top: 2.5rem; }
+  section { margin-top: 3rem; border-top: 1px solid var(--border); }
+  dt { font-weight: 600; margin-top: 1rem; }
+  dd { margin: 0.25rem 0 0; color: var(--muted); }
+</style>
